@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 
 function WhyUs() {
   return (
-    <div className="w-fit mx-auto px-12 lg:flex lg:px-15 lg:items-center lg:gap-50 lg:justify-between xl:w-full xl:justify-center xl:gap-60">
+    <div className="w-fit mx-auto px-12 lg:flex lg:px-15 lg:items-center lg:gap-50 lg:justify-between xl:w-full xl:justify-center xl:gap-80">
       <div className="w-fit  lg:flex-col ">
         <div className="flex items-center gap-1">
           <div className="bg-green-800 rounded-full px-3 py-2 w-fit">

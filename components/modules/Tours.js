@@ -1,35 +1,29 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import Spinner from "@/utils/spinner";
+import { useState } from "react";
 import Card from "./Card";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-import api from "@/utils/api";
+import TourCardSkeleton from "./TourCardSkeleton";
 
-function Tours({ initialData }) {
+function Tours({ data, loading }) {
   const [visibleCount, setVisibleCount] = useState(4);
-  const {
-    isPending,
-    isError,
-    error,
-    data = [],
-  } = useQuery({
-    queryKey: ["tours"],
-    queryFn: async () => {
-      const res = await api.get("/tour");
-      return res.data;
-    },
-    initialData,
-  });
-  console.log(data);
-  if (isPending)
+
+  if (loading) {
     return (
-      <div>
-        <Spinner />
+      <div className="flex flex-wrap justify-center items-center gap-4 my-10">
+        {[...Array(6)].map((_, i) => (
+          <TourCardSkeleton key={i} />
+        ))}
       </div>
     );
+  }
 
-  if (isError) return <div>مشکلی پیش آمده: {error.message}</div>;
+  if (!loading && data.length === 0) {
+    return (
+      <p className="text-center text-gray-400 my-10">
+        هیچ توری با این مشخصات پیدا نشد
+      </p>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center w-auto my-8 ">
@@ -56,7 +50,7 @@ function Tours({ initialData }) {
         ))}
       </ul>
 
-      {visibleCount < data.length ? (
+      {data.length > 4 && visibleCount < data.length ? (
         <button
           onClick={() => setVisibleCount((prev) => prev + 4)}
           className="flex items-center gap-1 text-gray-500 cursor-pointer hover:opacity-60 md:hidden lg:hidden xl:hidden"

@@ -6,15 +6,11 @@
   font-display: swap;
 }
 
-
-
-
 body {
   max-width: 1280px;
   margin: 0 auto;
   font-family: "Vazirmatn", sans-serif !important;
-  height: 100vh
-
+  height: 100vh;
 }
 .footer-titles {
   @apply text-xl font-semibold py-3;
@@ -23,9 +19,60 @@ body {
   @apply py-1 text-base hover:opacity-70;
 }
 
-.input-box{
-  @apply w-auto flex items-center gap-1 justify-center border-gray-300 border-2 rounded-xl px-2 py-1 lg:border-none 
+.input-box {
+  @apply w-[200px] flex items-center gap-1 justify-center border-gray-300 border-2 rounded-xl px-2 py-1  lg:border-none;
 }
-.inputs{
+.inputs {
   @apply text-lg border-none outline-none w-full lg:border-l-gray-300;
+}
+
+
+.rmdp-wrapper {
+  width: 100% !important; 
+  border-radius: 10px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #d1d5db !important; 
+  overflow: hidden !important;
+}
+
+.rmdp-week-day {
+  color: #16a34a !important; /* سبز تورینو */
+  font-weight: 600 !important;
+}
+
+.rmdp-day span {
+  color: #333 !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+.rmdp-day:hover span {
+  background-color: #dcfce7 !important; 
+  color: #15803d !important;
+}
+
+.rmdp-day.rmdp-selected span {
+  background-color: #16a34a !important;
+  color: white !important;
+}
+
+.rmdp-day.rmdp-today span {
+  border: 1px solid #16a34a !important;
+  color: #333 !important;
+}
+
+.rmdp-header {
+  color: #15803d !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 640px) {
+  .rmdp-wrapper {
+    width: 80vw !important;
+    max-width: 350px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+  }
 }
