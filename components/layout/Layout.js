@@ -16,7 +16,7 @@ function Layout({ children }) {
   const { state } = useUser();
   return (
     <div className="w-full">
-      <header className="flex items-center justify-between px-6 py-4 lg:px-8 xl:px-4">
+      <header className="flex items-center justify-between px-6 py-2 shadow-lg border-b border-gray-100 lg:px-8 xl:px-4">
         <div className="block lg:hidden xl:hidden">
           <MobileMenu />
         </div>

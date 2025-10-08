@@ -62,9 +62,7 @@ function HomePage({ initialData }) {
         origins={origins}
         destinations={destinations}
       />
-
       <Tours data={tours} loading={loading} />
-
       <PhoneBanner />
       <WhyUs />
       <Features />

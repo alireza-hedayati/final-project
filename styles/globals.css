@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   font-family: "Vazirmatn", sans-serif !important;
   height: 100vh;
+  /* background: #F5F5F7; */
 }
 .footer-titles {
   @apply text-xl font-semibold py-3;
@@ -75,4 +76,11 @@ body {
     justify-content: center !important;
     
   }
+}
+
+.tour-info-box{
+  @apply w-full flex flex-col justify-center items-center gap-1
+}
+.tour-info{
+  @apply flex items-center gap-1 text-gray-500
 }
