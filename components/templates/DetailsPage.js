@@ -31,7 +31,7 @@ function DetailsPage(props) {
   return (
     <div
       className="lg:w-9/10 lg:px-5
-    lg:rounded-2xl lg: shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] lg:mx-auto lg:py-2 lg:my-5"
+    lg:rounded-2xl lg:shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] lg:mx-auto lg:py-2 lg:my-5"
     >
       <div className="w-fit mx-auto py-10 flex flex-col items-center  lg:flex-row lg:w-full lg:py-5 ">
         <div className="relative w-[320px] h-[220px] md:w-[397px] md:h-[265px] lg:w-[350px] lg:h-[250px]">

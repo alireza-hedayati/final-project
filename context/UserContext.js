@@ -19,8 +19,8 @@ const userReducer = (state, action) => {
     case "LOG_OUT":
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
-      Cookies.remove("user_mobile");
-      return { ...state, isLoading: false };
+      Cookies.remove("user-mobile");
+      return { isAuthenticated: false, user: null, isLoading: false };
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
     default:
