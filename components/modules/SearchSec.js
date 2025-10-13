@@ -93,11 +93,12 @@ function SearchSec({ onSearch, origins, destinations }) {
             </div>
           </div>
 
-          <div className="w-auto flex items-center justify-center mx-auto gap-3 my-2 border-gray-300 py-2  rounded-xl border-2 border-solid lg:border-none lg:mx-10">
+          <div className="w-full   flex items-center justify-center gap-2 my-2 border-gray-300 py-2  rounded-xl border-2 border-solid lg:border-none lg:mx-10">
             <SlCalender
-              fontSize={30}
-              className=" mr-30 lg:m-auto"
+              fontSize={25}
+              className="lg:m-auto"
               color="gray"
+              
             />
             <PersianDateInput date={dateObject} setDate={setDateObject} />
           </div>

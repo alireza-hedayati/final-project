@@ -69,7 +69,7 @@ body {
 
 @media (max-width: 640px) {
   .rmdp-wrapper {
-    width: 80vw !important;
+    width: 50vw !important;
     max-width: 350px !important;
     display: flex !important;
     align-items: center !important;
@@ -83,4 +83,15 @@ body {
 }
 .tour-info{
   @apply flex items-center gap-1 text-gray-500
+}
+
+@layer components {
+  .border-custom-dashed {
+    background-image: linear-gradient(to right, #ccc 4px, transparent 4px, transparent 8px);
+    background-position: 0 bottom;
+    background-size: 10px 1px;
+    background-repeat: repeat-x; 
+    border-bottom: none !important;
+    padding-bottom: 1px; 
+  }
 }

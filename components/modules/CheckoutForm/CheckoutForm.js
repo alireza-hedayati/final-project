@@ -1,13 +1,14 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import useProfile from "@/hooks/useProfile";
+import GenderDropdown from "../InformationModules/GenderDropdown";
 import PersianDateInput from "@/utils/PersianDate";
 import informationSchema from "@/validation/InformationValidation";
-import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect} from "react";
-import { useForm, Controller } from "react-hook-form";
-import GenderDropdown from "./GenderDropdown";
-import useProfile from "@/hooks/useProfile";
-function InformationForm({ onSave, setIsOpen }) {
-  const { profile, isLoading } = useProfile();
+import { IoPerson } from "react-icons/io5";
 
+function CheckoutForm({ onSave }) {
+  const { profile, isLoading } = useProfile();
   const {
     register,
     control,
@@ -23,7 +24,6 @@ function InformationForm({ onSave, setIsOpen }) {
       birthDate: null,
     },
   });
-
   useEffect(() => {
     if (profile) {
       reset({
@@ -42,13 +42,20 @@ function InformationForm({ onSave, setIsOpen }) {
   const submitHandler = (data) => {
     onSave(data);
   };
-
   if (isLoading) return <p>درحال بارگزاری اطلاعات ...</p>;
   return (
-    <div>
-      <form onSubmit={handleSubmit(submitHandler)}>
-        <div>ویزایش اطلاعات شخصی</div>
-        <div className="mt-3">
+    <div className="w-7/11 mx-auto border-[1px] shadow-sm border-gray-200 rounded-lg mt-5 p-3 lg:w-8/10 lg:pb-[31px] lg:mx-0">
+      <div className="flex items-center gap-1 px-1 ">
+        <span>
+          <IoPerson />
+        </span>
+        <span>مشخصات مسافر</span>
+      </div>
+      <form
+        onSubmit={handleSubmit(submitHandler)}
+        className="lg:flex flex-wrap lg:w-full lg:gap-2"
+      >
+        <div className="mt-3 lg:w-48">
           <input
             type="text"
             {...register("fullName")}
@@ -57,7 +64,8 @@ function InformationForm({ onSave, setIsOpen }) {
           />
           <span>{errors.fullName?.message}</span>
         </div>
-        <div className="mt-3">
+
+        <div className="mt-3 lg:w-48">
           <input
             type="tel"
             {...register("nationalCode")}
@@ -66,10 +74,11 @@ function InformationForm({ onSave, setIsOpen }) {
           />
           <span>{errors.nationalCode?.message}</span>
         </div>
-        <div className="mt-3 border-[1px] border-gray-300 rounded-lg">
+
+        <div className="mt-3 border-[1px] border-gray-300 rounded-lg lg:w-48">
           <GenderDropdown errors={errors} control={control} />
         </div>
-        <div className="cursor-pointer border-gray-300 border-[1px] px-2 py-1 rounded-lg mt-3">
+        <div className="cursor-pointer border-gray-300 border-[1px] px-2 py-1 rounded-lg mt-3 lg:w-48">
           <Controller
             name="birthDate"
             control={control}
@@ -83,24 +92,12 @@ function InformationForm({ onSave, setIsOpen }) {
           <span>{errors.birthDate?.message}</span>
         </div>
 
-        <div className="flex items-center justify-between mt-4 w-8/10 mx-auto">
-          <button
-            type="submit"
-            className="cursor-pointer bg-green-500 w-30 text-white py-1 border-0 rounded-lg hover:bg-green-700"
-          >
-            تایید
-          </button>
-          <button
-            className="cursor-pointer text-green-500  py-1 border-green-500 border-[2px] rounded-lg w-30 hover:text-red-400  hover:border-red-400"
-            type="button"
-            onClick={() => setIsOpen(false)}
-          >
-            انصراف
-          </button>
+        <div>
+          <input />
         </div>
       </form>
     </div>
   );
 }
 
-export default InformationForm;
+export default CheckoutForm;

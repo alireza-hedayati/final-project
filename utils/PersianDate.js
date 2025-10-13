@@ -4,7 +4,8 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
 export default function PersianDateInput({ date, setDate }) {
-  const tailwindInputStyles = "w-full border-none outline-none text-gray-700  rounded-md";
+  const tailwindInputStyles =
+    "border-none outline-none text-gray-700 rounded-md ";
   return (
     <DatePicker
       calendar={persian}
@@ -13,8 +14,8 @@ export default function PersianDateInput({ date, setDate }) {
       inputClass={tailwindInputStyles}
       value={date}
       onChange={setDate}
-      containerClassName="w-full"
-       calendarPosition="bottom-left"
+      containerClassName="w-[80px]"
+      calendarPosition="bottom-left"
     />
   );
 }

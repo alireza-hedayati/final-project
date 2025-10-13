@@ -11,17 +11,17 @@ const checkOtp = ({ onLoginSuccess }) => {
     onSuccess: (response) => {
       const userData = response.data.user;
       Cookies.set("accessToken", response.data.accessToken, {
-        expires: 0.01,
+        expires: 30,
         secure: true,
         sameSite: "strict",
       });
       Cookies.set("refreshToken", response.data.refreshToken, {
-        expires: 0.01,
+        expires: 365,
         secure: true,
         sameSite: "strict",
       });
       Cookies.set("user-mobile", userData.mobile, {
-        expires: 0.01,
+        expires: 30,
         secure: true,
         sameSite: "strict",
       });

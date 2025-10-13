@@ -6,8 +6,7 @@ function PersonalInfo() {
   const [isOpen, setIsOpen] = useState(false);
   const { profile, isLoading, updateProfile } = useProfile();
   if (isLoading) return <p>در حال بارگذلری ...</p>;
-  if (!profile)
-    return <p>خطا در بارگذاری اطلاعات یا اطلاعات شخصی موجود نیست.</p>;
+
   const handleSavePersonalInfo = (data) => {
     const [firstName = "", lastName = ""] = data.fullName.split(" ");
     const newData = {
@@ -15,7 +14,9 @@ function PersonalInfo() {
       firstName,
       lastName,
       gender: data.gender === "مرد" ? "male" : "female",
-      birthDate: data.birthDate,
+      birthDate: data.birthDate
+        ? new Date(data.birthDate).toISOString().split("T")[0]
+        : null,
       nationalCode: data.nationalCode,
     };
     updateProfile(newData);

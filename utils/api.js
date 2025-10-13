@@ -13,6 +13,8 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+
+let refreshPromise = null; 
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
@@ -22,14 +24,14 @@ api.interceptors.response.use(
       if(!refreshPromise){
         refreshPromise = api.post('/auth/refresh-token', {},{withCredentials: true}).then(({data}) => {
           Cookies.set("accessToken",data.accessToken,{
-            expires:0.01,
+            expires:30,
             secure:true,
             sameSite:'Strict'
           })
           return data.accessToken
         }).catch(e=>{
           Cookies.remove("accessToken");
-          window.location.href = "/login";
+          window.location.href = "/torino";
           throw e;
         }).finally(()=>{refreshPromise = null})
 

@@ -13,9 +13,11 @@ import { toPersianDigits } from "@/utils/changeNum";
 import { transportFa } from "@/utils/transportationFa";
 import { cityNamesFa } from "@/utils/cityNamesFa";
 import UTCtoJalali from "@/utils/UTCtoJalali";
+import Link from "next/link";
 
 function DetailsPage(props) {
   const {
+    id,
     title,
     image,
     duration,
@@ -102,9 +104,12 @@ function DetailsPage(props) {
             </div>
           </div>
           <div className="w-full flex items-center justify-between py-5 px-5 md:px-0 lg:flex-row-reverse lg:py-1 lg:px-2">
-            <button className="cursor-pointer text-white bg-green-500 border-0 rounded-md px-5 py-1 hover:bg-green-600  md:text-lg">
+            <Link
+              href={`/torino/booking/${id}`}
+              className="cursor-pointer text-white bg-green-500 border-0 rounded-md px-5 py-1 hover:bg-green-600  md:text-lg"
+            >
               رزرو و خرید
-            </button>
+            </Link>
             <p className="flex items-center gap-1 text-green-500 text-xl font-semibold md:text-2xl">
               {toPersianDigits(price.toLocaleString())}
               <span className="text-sm text-gray-700 font-medium">تومان</span>
