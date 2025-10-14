@@ -1,7 +1,7 @@
 import SuccessPage from "@/components/templates/SuccessPage";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 function Success() {
   const router = useRouter();

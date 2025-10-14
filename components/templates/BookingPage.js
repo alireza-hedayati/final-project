@@ -44,6 +44,7 @@ function BookingPage(props) {
         return;
       }
       await api.put(`/basket/${tourId}`);
+      console.log(passenger)
       await api.post("/order", passenger);
       toast.success("خرید شما با موفقیت ثبت شد 🎉");
       router.push("/torino/booking/success");

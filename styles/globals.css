@@ -95,3 +95,15 @@ body {
     padding-bottom: 1px; 
   }
 }
+
+.vertical-divider::after {
+    content: ''; 
+    display: block; 
+    position: absolute; 
+    top: 10%;
+    bottom: 12%; 
+    left: 58%;
+    width: 1px;
+    background-color: #ccc;
+    transform: translateX(-50%); 
+}

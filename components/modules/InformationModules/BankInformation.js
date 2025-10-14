@@ -5,22 +5,23 @@ import useProfile from "@/hooks/useProfile";
 
 function BankInformation() {
   const [open, setOpen] = useState(false);
-  
+
   const { updateBankInfo, profile, isLoading } = useProfile();
-  if (isLoading) return <p>در حال بارگزاری اطلاعات</p>;
+
   const handleSave = (data) => {
     const newPayment = {
-      debitCard_code:data.cardNumber,
-      accountIdentifier:data.accountIdentifier,
-      shaba_code:data.shebaNumber,
+      debitCard_code: data.cardNumber,
+      accountIdentifier: data.accountIdentifier,
+      shaba_code: data.shebaNumber,
     };
     updateBankInfo(newPayment);
     setOpen(false);
   };
 
   const payment = profile?.payment || {};
+  if (isLoading) return <p className="text-center">در حال بارگزاری اطلاعات</p>;
   return (
-    <div className="w-8/10 border-gray-200 border-[1px] rounded-xl mx-auto mt-5 px-3 py-2 shadow-sm">
+    <div className="w-8/10 border-gray-200 border-[1px] rounded-xl mx-auto mt-5 px-3 py-2 shadow-sm lg:w-14/15">
       {!open ? (
         <>
           <div className="flex items-center justify-between">

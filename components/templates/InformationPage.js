@@ -2,26 +2,49 @@ import Navbar from "../modules/InformationModules/Navbar";
 import AccountInfo from "../modules/InformationModules/AccountInfo";
 import PersonalInfo from "../modules/InformationModules/PersonalInfo";
 import BankInformation from "../modules/InformationModules/BankInformation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import MyTours from "../modules/InformationModules/MyTours";
+import Transactions from "../modules/InformationModules/Transactions";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 function InformationPage() {
   const [profile, setProfile] = useState(true);
+  const [myTours, setMyTours] = useState(false);
+  const [checking, setChecking] = useState(true);
+  const router = useRouter();
+  useEffect(() => {
+    const token = Cookies.get("accessToken");
+    if (!token) {
+      router.push("/torino");
+    } else {
+      setChecking(false);
+    }
+  }, []);
   return (
-    <>
-      {profile && (
-        <div className="lg:w-14/15 lg:flex lg:justify-between  lg:mt-10 lg:items-baseline lg:mx-auto">
-          <div className="lg:w-2/10  ">
-            <Navbar setProfile={setProfile} profile={profile} />
-          </div>
-          <div className="lg:w-8/10">
-            <AccountInfo />
-            <PersonalInfo />
-            <BankInformation />
-          </div>
+    <div className="lg:flex lg:w-full lg:justify-center gap-20 lg:items-baseline lg:mx-auto">
+      <div className="lg:w-3/15">
+        <Navbar
+          setProfile={setProfile}
+          profile={profile}
+          setMyTours={setMyTours}
+          myTours={myTours}
+        />
+      </div>
+      {profile ? (
+        <div className="lg:w-10/15 lg:mt-5">
+          <AccountInfo />
+          <PersonalInfo />
+          <BankInformation />
         </div>
+      ) : myTours ? (
+        <div className="lg:w-10/15 lg:mt-5">
+          <MyTours />
+        </div>
+      ) : (
+        <div className="lg:w-12/15 lg:mt-5"><Transactions /></div>
       )}
-      
-    </>
+    </div>
   );
 }
 

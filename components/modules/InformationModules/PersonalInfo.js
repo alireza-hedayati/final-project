@@ -5,7 +5,7 @@ import useProfile from "@/hooks/useProfile";
 function PersonalInfo() {
   const [isOpen, setIsOpen] = useState(false);
   const { profile, isLoading, updateProfile } = useProfile();
-  if (isLoading) return <p>در حال بارگذلری ...</p>;
+  if (isLoading) return <p className="text-center">در حال بارگذاری ...</p>;
 
   const handleSavePersonalInfo = (data) => {
     const [firstName = "", lastName = ""] = data.fullName.split(" ");
@@ -23,7 +23,7 @@ function PersonalInfo() {
     setIsOpen(false);
   };
   return (
-    <div className="w-8/10 mx-auto rounded-xl border-gray-200 border-[1px] p-3 mt-5 shadow-sm">
+    <div className="w-8/10 mx-auto rounded-xl border-gray-200 border-[1px] p-3 mt-5 shadow-sm lg:w-14/15">
       {!isOpen ? (
         <>
           <div className="flex items-center justify-between">

@@ -12,14 +12,14 @@ function AccountInfo() {
 
   const { profile, isLoading, updateProfile } = useProfile();
 
-  if (isLoading) return <p>در حال بارگزاری ...</p>;
+  if (isLoading) return <p className="text-center mt-5">در حال بارگزاری ...</p>;
 
   const handleSaveEmail = (newEmail) => {
     updateProfile({ ...profile, email: newEmail });
     setIsOpen(false);
   };
   return (
-    <div className="border-[1px] border-gray-200 shadow-sm rounded-xl w-8/10 mx-auto p-3 mt-5 lg:py-0">
+    <div className="border-[1px] border-gray-200 shadow-sm rounded-xl w-8/10 mx-auto p-3 mt-5 lg:py-0 lg:w-14/15">
       <p className="py-3 text-lg font-semibold">اطلاعات حساب کاربری</p>
       <div className="flex items-center justify-between py-2">
         <p>شماره موبایل</p>
