@@ -13,28 +13,36 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-
-let refreshPromise = null; 
+let refreshPromise = null;
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
     const originalRequest = err.config;
+    if (!err.response || err.response.status >= 500) {
+      window.location.href = "/500";
+      return Promise.reject(err);
+    }
     if (err.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      if(!refreshPromise){
-        refreshPromise = api.post('/auth/refresh-token', {},{withCredentials: true}).then(({data}) => {
-          Cookies.set("accessToken",data.accessToken,{
-            expires:30,
-            secure:true,
-            sameSite:'Strict'
+      if (!refreshPromise) {
+        refreshPromise = api
+          .post("/auth/refresh-token", {}, { withCredentials: true })
+          .then(({ data }) => {
+            Cookies.set("accessToken", data.accessToken, {
+              expires: 30,
+              secure: true,
+              sameSite: "Strict",
+            });
+            return data.accessToken;
           })
-          return data.accessToken
-        }).catch(e=>{
-          Cookies.remove("accessToken");
-          window.location.href = "/torino";
-          throw e;
-        }).finally(()=>{refreshPromise = null})
-
+          .catch((e) => {
+            Cookies.remove("accessToken");
+            window.location.href = "/torino";
+            throw e;
+          })
+          .finally(() => {
+            refreshPromise = null;
+          });
       }
       const newToken = await refreshPromise;
       originalRequest.headers.Authorization = `Bearer ${newToken}`;
