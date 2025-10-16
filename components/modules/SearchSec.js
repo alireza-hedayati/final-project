@@ -47,7 +47,9 @@ function SearchSec({ onSearch, origins, destinations }) {
                 <CiLocationOn fontSize={25} color="gray" />
                 <span className={`${origin ? "text-black" : "text-gray-400"}`}>
                   {origin
-                    ?cityNamesFa[origins.find(item=>item.id === origin)?.name]|| origins.find((item) => item.id === origin)?.name
+                    ? cityNamesFa[
+                        origins.find((item) => item.id === origin)?.name
+                      ] || origins.find((item) => item.id === origin)?.name
                     : "مبدا"}
                 </span>
               </div>
@@ -72,9 +74,15 @@ function SearchSec({ onSearch, origins, destinations }) {
                 onClick={() => setShowDestinationDropdown((prev) => !prev)}
               >
                 <PiGlobe fontSize={25} color="gray" />
-                <span className={`${destination ? "text-black" : "text-gray-400"}`}>
+                <span
+                  className={`${destination ? "text-black" : "text-gray-400"}`}
+                >
                   {destination
-                    ?cityNamesFa[destinations.find(item=>item.id === destination)?.name]|| destinations.find((item) => item.id === destination)?.name
+                    ? cityNamesFa[
+                        destinations.find((item) => item.id === destination)
+                          ?.name
+                      ] ||
+                      destinations.find((item) => item.id === destination)?.name
                     : "مقصد"}
                 </span>
               </div>
@@ -94,21 +102,17 @@ function SearchSec({ onSearch, origins, destinations }) {
           </div>
 
           <div className="w-full   flex items-center justify-center gap-2 my-2 border-gray-300 py-2  rounded-xl border-2 border-solid lg:border-none lg:mx-10">
-            <SlCalender
-              fontSize={25}
-              className="lg:m-auto"
-              color="gray"
-              
-            />
+            <SlCalender fontSize={25} className="lg:m-auto" color="gray" />
             <PersianDateInput date={dateObject} setDate={setDateObject} />
           </div>
           <div className="flex items-center justify-center lg:px-5">
             <button
-            className="w-[350px]  bg-green-500 border-none rounded-xl cursor-pointer py-2 text-white hover:bg-green-800  lg:w-[150px] lg:text-lg lg:h-11 lg:py-0 lg:px-4"
-            type="submit"
-          >
-            جستجو
-          </button></div>
+              className="w-[350px]  bg-green-500 border-none rounded-xl cursor-pointer py-2 text-white hover:bg-green-800  lg:w-[150px] lg:text-lg lg:h-11 lg:py-0 lg:px-4"
+              type="submit"
+            >
+              جستجو
+            </button>
+          </div>
         </div>
       </form>
     </div>

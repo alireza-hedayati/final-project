@@ -2,10 +2,10 @@ import { useState } from "react";
 import { PiPencilSimpleLine } from "react-icons/pi";
 import InformationForm from "./InformationForm";
 import useProfile from "@/hooks/useProfile";
+import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 function PersonalInfo() {
   const [isOpen, setIsOpen] = useState(false);
   const { profile, isLoading, updateProfile } = useProfile();
-  if (isLoading) return <p className="text-center">در حال بارگذاری ...</p>;
 
   const handleSavePersonalInfo = (data) => {
     const [firstName = "", lastName = ""] = data.fullName.split(" ");
@@ -22,6 +22,13 @@ function PersonalInfo() {
     updateProfile(newData);
     setIsOpen(false);
   };
+  if (isLoading)
+    return (
+      <div className="w-full lg:w-14/15 mx-auto mt-10">
+        <ProfileSkeleton />
+      </div>
+    );
+
   return (
     <div className="w-8/10 mx-auto rounded-xl border-gray-200 border-[1px] p-3 mt-5 shadow-sm lg:w-14/15">
       {!isOpen ? (

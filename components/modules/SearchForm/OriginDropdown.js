@@ -13,7 +13,7 @@ function OriginDropdown({ origins, selectedOrigin, onChange }) {
       {origins.map((origin) => (
         <li
           key={origin.id}
-          onClick={() => onChange(origin.id)}
+          onClick={() => onChange(origin.id.toString())}
           className={`flex items-center justify-start cursor-pointer px-3 py-2 border-b-2 border-gray-200 hover:bg-green-100 ${
             selectedOrigin === origin.id ? "bg-green-200" : ""
           }`}

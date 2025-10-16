@@ -5,10 +5,26 @@ import { GoHome } from "react-icons/go";
 import { PiAirplaneTiltLight } from "react-icons/pi";
 import { PiSpeakerSimpleHighLight } from "react-icons/pi";
 import { IoCallOutline } from "react-icons/io5";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
+  const links = [
+    {
+      href: "/torino",
+      label: "صفحه اصلی",
+      icon: <GoHome />,
+    },
+    {
+      href: "/torino/services",
+      label: "خدمات گردشگری",
+      icon: <PiAirplaneTiltLight />,
+    },
+    { href: "#", label: "درباره ما", icon: <PiSpeakerSimpleHighLight /> },
+    { href: "#", label: "تماس با ما", icon: <IoCallOutline /> },
+  ];
   return (
     <div>
       <button
@@ -38,19 +54,23 @@ export default function MobileMenu() {
         </button>
 
         <ul className="flex flex-col gap-6 p-6 text-lg font-medium my-10">
-          <li className="footer-items cursor-pointer flex items-center  gap-1 hover:opacity-50">
-           <GoHome /> صفحه اصلی
-            
-          </li>
-          <li className="footer-items cursor-pointer flex items-center  gap-1 hover:opacity-50">
-            <PiAirplaneTiltLight /> خدمات گردشگری
-          </li>
-          <li className="footer-items cursor-pointer flex items-center  gap-1 hover:opacity-50">
-            <PiSpeakerSimpleHighLight /> درباره ما
-          </li>
-          <li className="footer-items cursor-pointer flex items-center  gap-1  hover:opacity-50">
-            <IoCallOutline /> تماس با ما
-          </li>
+          {links.map(({ href, label, icon }) => {
+            const isActive = router.pathname === href;
+            return (
+              <li>
+                <Link
+                  className={`footer-items cursor-pointer flex items-center  gap-1 hover:opacity-50 ${
+                    isActive ? "text-green-500" : "text-g"
+                  } `}
+                  key={href}
+                  href={href}
+                >
+                  {icon}
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

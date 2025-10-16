@@ -47,6 +47,7 @@ function BookingPage(props) {
       console.log(passenger)
       await api.post("/order", passenger);
       toast.success("خرید شما با موفقیت ثبت شد 🎉");
+      sessionStorage.setItem("purchaseSuccess","true")
       router.push("/torino/booking/success");
     } catch (err) {
       toast.error("مشکل در ثبت سفارش دوباره تلاش کنید.");

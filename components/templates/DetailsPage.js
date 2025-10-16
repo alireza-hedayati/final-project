@@ -138,7 +138,7 @@ function DetailsPage(props) {
                 ? "اتمام ظرفیت"
                 : availableSeats <= 4
                 ? "ظرفیت محدود"
-                : "اتمام ظرفیت"}
+                : " رزرو و خرید"}
             </Link>
             <p className="flex items-center gap-1 text-green-500 text-xl font-semibold md:text-2xl">
               {toPersianDigits(price.toLocaleString())}
@@ -191,7 +191,7 @@ function DetailsPage(props) {
         <div className="tour-info-box">
           <p className="tour-info">
             <IoIosContacts />
-            ظرفیت
+           حداکثر ظرفیت
           </p>
           <p>{availableSeats ? capacity : "اتمام ظرفیت"}</p>
         </div>

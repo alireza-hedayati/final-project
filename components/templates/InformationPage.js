@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 function InformationPage() {
   const [profile, setProfile] = useState(true);
   const [myTours, setMyTours] = useState(false);
+  const [transaction, setTransaction] = useState(false);
   const [checking, setChecking] = useState(true);
   const router = useRouter();
   useEffect(() => {
@@ -21,18 +22,23 @@ function InformationPage() {
       setChecking(false);
     }
   }, []);
+  if (checking) return <p>در حال بارگزاری...</p>;
   return (
-    <div className="lg:flex lg:w-full lg:justify-center gap-20 lg:items-baseline lg:mx-auto">
-      <div className="lg:w-3/15">
-        <Navbar
-          setProfile={setProfile}
-          profile={profile}
-          setMyTours={setMyTours}
-          myTours={myTours}
-        />
+    <div className="lg:flex lg:w-full lg:justify-center gap-20 lg:items-start lg:mx-auto">
+      <div className="lg:w-3/15 lg:mt-10">
+         
+          <Navbar
+            setProfile={setProfile}
+            profile={profile}
+            setMyTours={setMyTours}
+            myTours={myTours}
+            setTransaction={setTransaction}
+            transaction={transaction}
+          />
+        
       </div>
       {profile ? (
-        <div className="lg:w-10/15 lg:mt-5">
+        <div className="lg:w-10/15 lg:mt-5 min-h-[400px]">
           <AccountInfo />
           <PersonalInfo />
           <BankInformation />
@@ -42,7 +48,9 @@ function InformationPage() {
           <MyTours />
         </div>
       ) : (
-        <div className="lg:w-12/15 lg:mt-5"><Transactions /></div>
+        <div className="lg:w-12/15 lg:mt-5">
+          <Transactions />
+        </div>
       )}
     </div>
   );

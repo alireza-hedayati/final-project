@@ -8,6 +8,7 @@ import Features from "../modules/Features";
 import api from "@/utils/api";
 import { useRouter } from "next/router";
 
+
 function extractUniqueCities(data, key) {
   const citiesMap = new Map();
   data.forEach((tour) => {
@@ -44,8 +45,8 @@ function HomePage({ initialData }) {
       if (originId) params.append("originId", originId);
       if (destinationId) params.append("destinationId", destinationId);
       if (startDate) params.append("startDate", startDate);
-      const queryString = params.toString() ? `?${params.toString()}`:"";
-      const res = await api.get(`/tour?${queryString}`);
+      const queryString = params.toString();
+      const res = await api.get(`/tour${queryString ? `?${queryString}` : ""}`);
       setTours(res.data);
     } catch (err) {
       console.error("Client-side search failed:", err);

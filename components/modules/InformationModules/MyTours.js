@@ -2,6 +2,7 @@ import api from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import TourCard from "./TourCard";
+import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function MyTours() {
   const { data: tours, isLoading } = useQuery({
@@ -12,15 +13,22 @@ function MyTours() {
     },
   });
   if (isLoading) {
-    return <p className="text-center mt-5">در حال بارگزاری اطلاعات ...</p>;
+    return <div className="mt-10 lg:w-14/15 lg:p-0 lg:m-0 "><ProfileSkeleton/></div>;
   }
-  console.log("hello", tours);
   return (
-    <div className="lg:w-14/15 lg:border-[1px] lg:border-gray-200 lg:shadow-sm lg:rounded-lg lg:px-4">
-      {(tours || []).map((tour) => (
-        <TourCard {...tour} key={tour.id} />
-      ))}
-    </div>
+    <>
+      {tours?.length > 0 ? (
+        <div className="lg:w-14/15 lg:border-[1px] lg:border-gray-200 lg:shadow-sm lg:rounded-lg lg:px-4">
+          {(tours || []).map((tour) => (
+            <TourCard {...tour} key={tour.id} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-lg text-center font-semibold my-5 ">
+          شما هیچ توری رزرو نکردید
+        </p>
+      )}
+    </>
   );
 }
 

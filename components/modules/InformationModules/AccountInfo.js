@@ -4,6 +4,7 @@ import { useState } from "react";
 import { PiPencilSimpleLine } from "react-icons/pi";
 import useProfile from "@/hooks/useProfile";
 import EmailForm from "./EmailForm";
+import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function AccountInfo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ function AccountInfo() {
 
   const { profile, isLoading, updateProfile } = useProfile();
 
-  if (isLoading) return <p className="text-center mt-5">در حال بارگزاری ...</p>;
+  if (isLoading) return <div className="mt-10"><ProfileSkeleton/></div>;
 
   const handleSaveEmail = (newEmail) => {
     updateProfile({ ...profile, email: newEmail });

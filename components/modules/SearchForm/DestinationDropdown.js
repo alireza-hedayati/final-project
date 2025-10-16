@@ -20,7 +20,7 @@ function DestinationDropdown({ destinations, onChange, selectedDestinaton }) {
         return (
           <li
             key={destination.id}
-            onClick={() => onChange(destination.id)}
+            onClick={() => onChange(destination.id.toString())}
             className={`flex items-center
                justify-start cursor-pointer px-3 py-2 hover:bg-green-100 border-b-2 border-gray-200 ${
                  selectedDestinaton === destination.id ? "bg-green-200" : ""

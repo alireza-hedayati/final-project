@@ -8,9 +8,9 @@ export default function Details({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const { id } = context.params;
+  const { id: tourId } = context.params;
 
-  const res = await api.get(`/tour/${id}`);
+  const res = await api.get(`/tour/${tourId}`);
   const data = res.data;
 
   if (!data) {

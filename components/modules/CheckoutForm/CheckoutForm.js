@@ -6,6 +6,9 @@ import GenderDropdown from "../InformationModules/GenderDropdown";
 import PersianDateInput from "@/utils/PersianDate";
 import informationSchema from "@/validation/InformationValidation";
 import { IoPerson } from "react-icons/io5";
+import CheckoutSkeleton from "../Skeletons/CheckoutSkeleton";
+import useIsMobile from "@/hooks/useIsMobile";
+import CheckoutSkeletonLg from "../Skeletons/CheckoutSkeletonLg";
 
 function CheckoutForm({ onSave }) {
   const { profile, isLoading } = useProfile();
@@ -42,9 +45,16 @@ function CheckoutForm({ onSave }) {
   const submitHandler = (data) => {
     onSave(data);
   };
-  if (isLoading) return <p>درحال بارگزاری اطلاعات ...</p>;
+  const isMobile = useIsMobile(1024);
+  if (isLoading) {
+    if (isMobile) {
+      return <CheckoutSkeleton />;
+    } else {
+      return <CheckoutSkeletonLg />;
+    }
+  }
   return (
-    <div className="w-7/11 mx-auto border-[1px] shadow-sm border-gray-200 rounded-lg mt-5 p-3 lg:w-8/10 lg:pb-[31px] lg:mx-0">
+    <div className="w-7/11 mx-auto border-[1px] shadow-sm border-gray-200 rounded-lg mt-5 p-3 lg:w-8/10 lg:pb-[31px] lg:mx-0 lg:mt-5">
       <div className="flex items-center gap-1 px-1 ">
         <span>
           <IoPerson />
@@ -90,10 +100,6 @@ function CheckoutForm({ onSave }) {
             )}
           />
           <span>{errors.birthDate?.message}</span>
-        </div>
-
-        <div>
-          <input />
         </div>
       </form>
     </div>

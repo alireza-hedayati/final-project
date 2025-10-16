@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "./Card";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-import TourCardSkeleton from "./TourCardSkeleton";
+import TourCardSkeleton from "./Skeletons/TourCardSkeleton";
 
 function Tours({ data, loading }) {
   const [visibleCount, setVisibleCount] = useState(4);
@@ -10,7 +10,7 @@ function Tours({ data, loading }) {
   if (loading) {
     return (
       <div className="flex flex-wrap justify-center items-center gap-4 my-10">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(data.length)].map((_, i) => (
           <TourCardSkeleton key={i} />
         ))}
       </div>
@@ -27,7 +27,9 @@ function Tours({ data, loading }) {
 
   return (
     <div className="flex flex-col items-center w-auto my-8 ">
-      <p className="text-2xl my-3 px-17 self-start md:px-40">همه تورها</p>
+      <p className="text-2xl my-3 px-17 self-start md:px-40 lg:px-10">
+        همه تورها
+      </p>
       <ul className="flex flex-col gap-4 transition-all duration-500 ease-in-out md:hidden xl:hidden">
         {data.slice(0, visibleCount).map((tour) => (
           <li

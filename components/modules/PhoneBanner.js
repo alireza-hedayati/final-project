@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { MdLocalPhone } from "react-icons/md";
 import { toPersianDigits } from "@/utils/changeNum";
 
@@ -11,7 +10,7 @@ function PhoneBanner() {
         <div className="bg-green-600 w-full rounded-lg"></div>
         <img
           className="bg-transparent absolute left-0 bottom-0 "
-          src="/images/cartoon.png"
+          src="/images/cartoon.webp"
         />
       </div>
       <div className="absolute top-5 right-3">

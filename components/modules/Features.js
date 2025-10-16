@@ -5,7 +5,7 @@ function Features() {
   return (
     <div className="border-t-2 border-gray-100 px-2 w-fit mx-auto lg:flex lg:items-center lg:mt-10">
       <div className="flex items-center my-5">
-        <Image src="/images/price.png" width={70} height={30} alt="image" />
+        <Image src="/images/price.webp" width={70} height={30} alt="image" />
         <div className="px-3">
           <p className="font-semibold">بصرفه ترین قیمت</p>
           <p className="text-sm">
@@ -14,7 +14,7 @@ function Features() {
         </div>
       </div>
       <div className="flex items-center my-5">
-        <Image src="/images/support.png" width={70} height={30} alt="image" />
+        <Image src="/images/support.webp" width={70} height={30} alt="image" />
         <div className="px-3">
           <p className="font-semibold">پشتیبانی</p>
           <p className="text-sm">
@@ -25,7 +25,7 @@ function Features() {
       </div>
       <div className="flex items-center my-5">
         <Image
-          src="/images/satisfaction.png"
+          src="/images/satisfaction.webp"
           width={70}
           height={30}
           alt="image"

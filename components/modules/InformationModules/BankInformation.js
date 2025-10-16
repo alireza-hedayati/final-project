@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PiPencilSimpleLine } from "react-icons/pi";
 import BankForm from "./BankForm";
 import useProfile from "@/hooks/useProfile";
+import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function BankInformation() {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ function BankInformation() {
   };
 
   const payment = profile?.payment || {};
-  if (isLoading) return <p className="text-center">در حال بارگزاری اطلاعات</p>;
+  if (isLoading) return <div className="mt-10"><ProfileSkeleton/></div>;
   return (
     <div className="w-8/10 border-gray-200 border-[1px] rounded-xl mx-auto mt-5 px-3 py-2 shadow-sm lg:w-14/15">
       {!open ? (

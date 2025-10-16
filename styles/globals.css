@@ -107,3 +107,7 @@ body {
     background-color: #ccc;
     transform: translateX(-50%); 
 }
+
+.benefits{
+  @apply w-7/10 flex flex-col items-center border-[1px] border-gray-100 rounded-t-xl shadow-md md:w-3/10
+}

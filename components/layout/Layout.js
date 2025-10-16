@@ -9,13 +9,27 @@ import { useUser } from "@/context/UserContext";
 import ProfileDropDown from "./ProfileDropDown";
 import LoginButtons from "./LoginButtons";
 import LoginButtonSkeleton from "./LoginButtonSkeleton";
+import { useRouter } from "next/router";
 
 function Layout({ children }) {
+  const links = [
+    {
+      href: "/torino",
+      label: "صفحه اصلی",
+    },
+    {
+      href: "/torino/services",
+      label: "خدمات گردشگری",
+    },
+    { href: "#", label: "درباره ما" },
+    { href: "#", label: "تماس با ما" },
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "7485-021";
   const { state } = useUser();
+  const router = useRouter();
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen flex flex-col">
       <header className="flex items-center justify-between px-6 py-2 shadow-lg border-b border-gray-100 lg:px-8 xl:px-4">
         <div className="block lg:hidden xl:hidden">
           <MobileMenu />
@@ -24,23 +38,22 @@ function Layout({ children }) {
         <div className="hidden lg:flex lg: xl:flex items-center justify-between gap-20">
           <div className="">
             <Link href="/torino">
-              <Image src="/images/logo.png" alt="logo" width={80} height={80} />
+              <Image src="/images/logo.webp" alt="logo" width={80} height={80} />
             </Link>
           </div>
-
           <ul className="flex items-center justify-between gap-5">
-            <li className="hover:opacity-70">
-              <Link href="/torino">صفحه اصلی</Link>
-            </li>
-            <li className="hover:opacity-70">
-              <Link href="#">خدمات گردشگری</Link>
-            </li>
-            <li className="hover:opacity-70">
-              <Link href="#">درباره ما</Link>
-            </li>
-            <li className="hover:opacity-70">
-              <Link href="#">تماس با ما</Link>
-            </li>
+            {links.map(({ href, label }) => {
+              const isActive = router.pathname === href;
+              return (
+                <li
+                  className={`${isActive ? "text-green-500" : "text-gray-700"}`}
+                >
+                  <Link key={href} href={href}>
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         {state.isLoading ? (
@@ -53,7 +66,7 @@ function Layout({ children }) {
 
         {isOpen && <LoginModal setIsOpen={setIsOpen} />}
       </header>
-      <div>{children}</div>
+      <main className="flex-grow">{children}</main>
 
       <footer>
         <div
@@ -99,37 +112,37 @@ function Layout({ children }) {
 
           <div className="w-full flex items-center justify-center flex-col md:w-auto xl:w-auto">
             <div className=" xl:self-end">
-              <Image src="/images/logo.png" alt="logo" width={80} height={50} />
+              <Image src="/images/logo.webp" alt="logo" width={80} height={50} />
               <p dir="rtl" className="text-right">
                 تلفن پشتیبانی:{toPersianDigits(phoneNumber)}
               </p>
             </div>
             <div className=" flex items-center justify-between gap-5 mt-7">
               <Image
-                src="/images/airplane.png"
+                src="/images/airplane.webp"
                 alt="airplane"
                 width={50}
                 height={20}
               />
               <Image
-                src="/images/passenger-rights.png"
+                src="/images/passenger-rights.webp"
                 alt="passenger-rights"
                 width={50}
                 height={20}
               />
               <Image
-                src="/images/ecunion.png"
+                src="/images/ecunion.webp"
                 alt="ecunion"
                 width={50}
                 height={20}
               />
               <Image
-                src="/images/samandehi.png"
+                src="/images/samandehi.webp"
                 alt="samandehi"
                 width={50}
                 height={20}
               />
-              <Image src="/images/aira.png" alt="aira" width={50} height={20} />
+              <Image src="/images/aira.webp" alt="aira" width={50} height={20} />
             </div>
           </div>
         </div>

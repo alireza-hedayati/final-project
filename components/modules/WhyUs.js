@@ -9,7 +9,7 @@ function WhyUs() {
           <div className="bg-green-800 rounded-full px-3 py-2 w-fit">
             <img
               className="w-[10px]"
-              src="/images/question-mark.png"
+              src="/images/question-mark.webp"
               alt="Why Us"
             />
           </div>

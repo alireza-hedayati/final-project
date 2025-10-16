@@ -1,9 +1,36 @@
-import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { BiSolidPlaneAlt } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 
+import Link from "next/link";
+
 function SuccessPage() {
+  const router = useRouter();
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const purchaseSuccess = sessionStorage.getItem("purchaseSuccess");
+    if (!purchaseSuccess) {
+      router.replace("/torino");
+      return;
+    }
+    const duration = 5000;
+    const step = 10;
+    const increment = 100 / (duration / step);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      setProgress(current);
+      if (current >= 100) {
+        clearInterval(timer);
+        sessionStorage.removeItem("purchaseSuccess");
+        router.push("/torino");
+      }
+    }, step);
+    return () => clearInterval(timer);
+  }, [router]);
+
+
   return (
     <div className="my-20">
       <div className="w-8/10 mx-auto mt-20 flex items-center justify-center gap-2 lg:mt-20">
@@ -22,20 +49,24 @@ function SuccessPage() {
       <div className="flex items-center justify-center mt-7">
         <p className="text-xl font-semibold ">پرداخت شما با موفقیت انجام شد</p>
       </div>
-      <div className="flex items-center justify-center gap-5 mt-10">
-        <Link
-          href="/torino/tours/information"
-          className="bg-green-500 cursor-pointer rounded-lg p-2 text-white hover:bg-green-600"
-        >
-          جزییات خرید
-        </Link>
-        <Link
-          href="/torino"
-          className="bg-green-500 cursor-pointer rounded-lg py-2 px-3 text-white hover:bg-green-600"
-        >
-          {" "}
-          صفحه اصلی
-        </Link>
+
+      <div className="flex justify-center items-center mt-6">
+        <div className="relative w-[150px] h-[44px] rounded-lg overflow-hidden bg-green-300 shadow-md">
+          <div
+            className="absolute left-0 top-0 h-full bg-green-600 transition-all ease-linear"
+            style={{
+              width: `${progress}%`,
+              transitionDuration: "100ms",
+            }}
+          ></div>
+
+          <Link
+            href="/torino"
+            className="absolute inset-0 flex items-center justify-center text-white font-medium z-10 select-none"
+          >
+            صفحه اصلی
+          </Link>
+        </div>
       </div>
     </div>
   );

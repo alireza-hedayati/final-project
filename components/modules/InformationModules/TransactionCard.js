@@ -15,7 +15,7 @@ function TransactionCard(props) {
         ثبت نام در تور گردشگری
       </td>
       <td className="w-30 px-5 py-2 text-gray-700 text-center md:w-40">
-        {toPersianDigits(id).slice(0, 8)}
+        {(id).slice(0, 8)}
       </td>
     </tr>
   );
