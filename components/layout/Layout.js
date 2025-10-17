@@ -22,7 +22,7 @@ function Layout({ children }) {
       label: "خدمات گردشگری",
     },
     { href: "/torino/about-us", label: "درباره ما" },
-    { href: "#", label: "تماس با ما" },
+    { href: "/torino/contact-us", label: "تماس با ما" },
   ];
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "7485-021";
@@ -87,7 +87,7 @@ function Layout({ children }) {
                 <Link href="/torino/about-us">درباره ما</Link>
               </li>
               <li className="footer-items">
-                <Link href="#">تماس با ما</Link>
+                <Link href="/torino/contact-us">تماس با ما</Link>
               </li>
               <li className="footer-items">
                 <Link href="/torino/services">چرا تورینو</Link>

@@ -22,8 +22,16 @@ export default function MobileMenu() {
       label: "خدمات گردشگری",
       icon: <PiAirplaneTiltLight />,
     },
-    { href: "/torino/about-us", label: "درباره ما", icon: <PiSpeakerSimpleHighLight /> },
-    { href: "#", label: "تماس با ما", icon: <IoCallOutline /> },
+    {
+      href: "/torino/about-us",
+      label: "درباره ما",
+      icon: <PiSpeakerSimpleHighLight />,
+    },
+    {
+      href: "/torino/contact-us",
+      label: "تماس با ما",
+      icon: <IoCallOutline />,
+    },
   ];
   return (
     <div>
