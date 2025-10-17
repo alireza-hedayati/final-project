@@ -21,7 +21,7 @@ function Layout({ children }) {
       href: "/torino/services",
       label: "خدمات گردشگری",
     },
-    { href: "#", label: "درباره ما" },
+    { href: "/torino/about-us", label: "درباره ما" },
     { href: "#", label: "تماس با ما" },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +38,12 @@ function Layout({ children }) {
         <div className="hidden lg:flex lg: xl:flex items-center justify-between gap-20">
           <div className="">
             <Link href="/torino">
-              <Image src="/images/logo.webp" alt="logo" width={80} height={80} />
+              <Image
+                src="/images/logo.webp"
+                alt="logo"
+                width={80}
+                height={80}
+              />
             </Link>
           </div>
           <ul className="flex items-center justify-between gap-5">
@@ -79,13 +84,13 @@ function Layout({ children }) {
             <p className="footer-titles">تورینو</p>
             <ul>
               <li className="footer-items">
-                <Link href="#">درباره ما</Link>
+                <Link href="/torino/about-us">درباره ما</Link>
               </li>
               <li className="footer-items">
                 <Link href="#">تماس با ما</Link>
               </li>
               <li className="footer-items">
-                <Link href="#">چرا تورینو</Link>
+                <Link href="/torino/services">چرا تورینو</Link>
               </li>
               <li className="footer-items">
                 <Link href="#">بیمه مسافرتی</Link>
@@ -112,7 +117,12 @@ function Layout({ children }) {
 
           <div className="w-full flex items-center justify-center flex-col md:w-auto xl:w-auto">
             <div className=" xl:self-end">
-              <Image src="/images/logo.webp" alt="logo" width={80} height={50} />
+              <Image
+                src="/images/logo.webp"
+                alt="logo"
+                width={80}
+                height={50}
+              />
               <p dir="rtl" className="text-right">
                 تلفن پشتیبانی:{toPersianDigits(phoneNumber)}
               </p>
@@ -142,7 +152,12 @@ function Layout({ children }) {
                 width={50}
                 height={20}
               />
-              <Image src="/images/aira.webp" alt="aira" width={50} height={20} />
+              <Image
+                src="/images/aira.webp"
+                alt="aira"
+                width={50}
+                height={20}
+              />
             </div>
           </div>
         </div>
