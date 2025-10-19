@@ -41,7 +41,11 @@ function Tours({ data, loading }) {
         ))}
       </ul>
 
-      <ul className="hidden lg:flex lg:flex-wrap lg:w-[900px] md:flex md:flex-wrap md:w-[600px] md:gap-5 xl:flex xl:flex-wrap xl:gap-10 xl:my-5 xl:transition-all xl:duration-500 xl:ease-in-out xl:w-full ">
+      <ul
+        className="hidden lg:flex lg:flex-wrap lg:w-[900px] md:flex md:flex-wrap md:w-[600px] md:gap-5 xl:flex xl:flex-wrap xl:gap-10 xl:my-5 
+      xl:pr-6
+      xl:transition-all xl:duration-500 xl:ease-in-out xl:w-full"
+      >
         {data.map((tour) => (
           <li
             key={tour.id}

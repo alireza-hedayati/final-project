@@ -5,10 +5,10 @@ import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const images = [
-  "/images/slide1.png",
-  "/images/slide2.png",
-  "/images/slide3.png",
-  "/images/slide4.png",
+  "/images/slide1.webp",
+  "/images/slide2.webp",
+  "/images/slide3.webp",
+  "/images/slide4.webp",
 ];
 
 export default function Carousel() {

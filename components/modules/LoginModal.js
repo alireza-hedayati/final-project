@@ -8,6 +8,7 @@ import { IoReturnDownBack } from "react-icons/io5";
 import OtpForm from "./OtpForm";
 import checkOtp from "../helpers/checkOtp";
 import { useUser } from "@/context/UserContext";
+import { toPersianDigits } from "@/utils/changeNum";
 
 function LoginModal({ setIsOpen }) {
   const [step, setStep] = useState(1);

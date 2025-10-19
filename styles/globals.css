@@ -7,11 +7,10 @@
 }
 
 body {
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
   font-family: "Vazirmatn", sans-serif !important;
   height: 100vh;
-  /* background: #F5F5F7; */
 }
 .footer-titles {
   @apply text-xl font-semibold py-3;
@@ -27,12 +26,11 @@ body {
   @apply text-lg border-none outline-none w-full lg:border-l-gray-300;
 }
 
-
 .rmdp-wrapper {
-  width: 100% !important; 
+  width: 100% !important;
   border-radius: 10px !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
-  border: 1px solid #d1d5db !important; 
+  border: 1px solid #d1d5db !important;
   overflow: hidden !important;
 }
 
@@ -48,7 +46,7 @@ body {
 }
 
 .rmdp-day:hover span {
-  background-color: #dcfce7 !important; 
+  background-color: #dcfce7 !important;
   color: #15803d !important;
 }
 
@@ -74,40 +72,44 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    
   }
 }
 
-.tour-info-box{
-  @apply w-full flex flex-col justify-center items-center gap-1
+.tour-info-box {
+  @apply w-full flex flex-col justify-center items-center gap-1;
 }
-.tour-info{
-  @apply flex items-center gap-1 text-gray-500
+.tour-info {
+  @apply flex items-center gap-1 text-gray-500;
 }
 
 @layer components {
   .border-custom-dashed {
-    background-image: linear-gradient(to right, #ccc 4px, transparent 4px, transparent 8px);
+    background-image: linear-gradient(
+      to right,
+      #ccc 4px,
+      transparent 4px,
+      transparent 8px
+    );
     background-position: 0 bottom;
     background-size: 10px 1px;
-    background-repeat: repeat-x; 
+    background-repeat: repeat-x;
     border-bottom: none !important;
-    padding-bottom: 1px; 
+    padding-bottom: 1px;
   }
 }
 
 .vertical-divider::after {
-    content: ''; 
-    display: block; 
-    position: absolute; 
-    top: 10%;
-    bottom: 12%; 
-    left: 58%;
-    width: 1px;
-    background-color: #ccc;
-    transform: translateX(-50%); 
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10%;
+  bottom: 12%;
+  left: 58%;
+  width: 1px;
+  background-color: #ccc;
+  transform: translateX(-50%);
 }
 
-.benefits{
-  @apply w-7/10 flex flex-col items-center border-[1px] border-gray-100 rounded-t-xl shadow-md md:w-3/10
+.benefits {
+  @apply w-7/10 flex flex-col items-center border-[1px] border-gray-100 rounded-t-xl shadow-md md:w-3/10;
 }
