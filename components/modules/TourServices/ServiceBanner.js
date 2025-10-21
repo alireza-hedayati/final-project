@@ -17,12 +17,12 @@ function ServiceBanner() {
         <h3 className="text-xl font-bold text-gray-600 xl:text-2xl">
           بدون محدودیت سفر کنید
         </h3>
-        <p className="text-gray-500">
+        <p className="text-gray-500" style={{fontFamily:"YekanBakh"}}>
           لحظاتی فراموش نشدنی را در مکان هایی رویایی تجربه کنید
         </p>
         <Link
           href="/torino"
-          className="bg-[linear-gradient(to_right,#00b09b,#96c93d)] text-center w-40 mt-2 py-1 rounded-lg text-white hover:opacity-60 xl:text-lg xl:w-48"
+          className="bg-[linear-gradient(to_right,#00b09b,#96c93d)] text-center w-40 mt-2 py-1 rounded-lg text-white hover:opacity-60 xl:text-lg xl:w-48" 
         >
           همین حالا رزرو کنید
         </Link>

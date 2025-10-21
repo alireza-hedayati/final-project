@@ -1,8 +1,9 @@
-import React from "react";
 import { FaUser } from "react-icons/fa6";
 import { CiLogin } from "react-icons/ci";
+
 function LoginButtons({ setIsOpen }) {
   return (
+
     <div>
       <button
         onClick={() => setIsOpen(true)}

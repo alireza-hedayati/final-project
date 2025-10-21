@@ -11,6 +11,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import CheckoutSkeletonLg from "../Skeletons/CheckoutSkeletonLg";
 
 function CheckoutForm({ onSave }) {
+
   const { profile, isLoading } = useProfile();
   const {
     register,
@@ -53,6 +54,7 @@ function CheckoutForm({ onSave }) {
       return <CheckoutSkeletonLg />;
     }
   }
+  
   return (
     <div className="w-7/11 mx-auto border-[1px] shadow-sm border-gray-200 rounded-lg mt-5 p-3 lg:w-8/10 lg:pb-[31px] lg:mx-0 lg:mt-5">
       <div className="flex items-center gap-1 px-1 ">
@@ -85,7 +87,7 @@ function CheckoutForm({ onSave }) {
           <span>{errors.nationalCode?.message}</span>
         </div>
 
-        <div className="mt-3 border-[1px] border-gray-300 rounded-lg lg:w-48">
+        <div className="mt-3 border-[1px] border-gray-300 rounded-lg lg:w-48 ">
           <GenderDropdown errors={errors} control={control} />
         </div>
         <div className="cursor-pointer border-gray-300 border-[1px] px-2 py-1 rounded-lg mt-3 lg:w-48">

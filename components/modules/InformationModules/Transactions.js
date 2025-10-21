@@ -1,10 +1,10 @@
-import api from "@/utils/api";
+import api from "@/config/api";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import TransactionCard from "./TransactionCard";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function Transactions() {
+
   const { data: transactions, isLaoading } = useQuery({
     queryKey: ["myTransactions"],
     queryFn: async () => {
@@ -13,12 +13,14 @@ function Transactions() {
     },
   });
   if (isLaoading)
+   
     return (
       <div className="mt-15">
         <ProfileSkeleton />
       </div>
     );
-  return (
+  
+    return (
     <>
       {transactions?.length > 0 ? (
         <div className="w-8/10 mx-auto mt-2">

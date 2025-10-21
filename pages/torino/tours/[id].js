@@ -1,5 +1,5 @@
 import DetailsPage from "@/components/templates/DetailsPage";
-import api from "@/utils/api";
+import api from "@/config/api";
 import { notFound } from "next/navigation";
 import React from "react";
 

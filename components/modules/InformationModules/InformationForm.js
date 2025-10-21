@@ -1,10 +1,11 @@
 import PersianDateInput from "@/utils/PersianDate";
 import informationSchema from "@/validation/InformationValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect} from "react";
+import { useEffect} from "react";
 import { useForm, Controller } from "react-hook-form";
 import GenderDropdown from "./GenderDropdown";
 import useProfile from "@/hooks/useProfile";
+
 function InformationForm({ onSave, setIsOpen }) {
   const { profile, isLoading } = useProfile();
 
@@ -44,6 +45,7 @@ function InformationForm({ onSave, setIsOpen }) {
   };
 
   if (isLoading) return <p>درحال بارگزاری اطلاعات ...</p>;
+  
   return (
     <div>
       <form onSubmit={handleSubmit(submitHandler)}>

@@ -1,8 +1,9 @@
 import bankInfoValidation from "@/validation/BankInfoValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useProfile from "@/hooks/useProfile";
+
 function BankForm({ setOpen, setInformation }) {
   const { profile, isLoading } = useProfile();
   const {
@@ -35,6 +36,7 @@ function BankForm({ setOpen, setInformation }) {
   };
 
   if (isLoading) return <p>در حال بارگزاری...</p>;
+
   return (
     <div className="w-full">
       <p className="mt-2">ویرایش اطلاعات حساب بانکی</p>

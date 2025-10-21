@@ -18,35 +18,44 @@ api.interceptors.response.use(
   (res) => res,
   async (err) => {
     const originalRequest = err.config;
-    if (!err.response || err.response.status >= 500) {
+    if (!err.response) {
+      return Promise.reject(error);
+    }
+    const status = err.response.status;
+    if (status >= 500) {
       window.location.href = "/500";
       return Promise.reject(err);
     }
-    if (err.response?.status === 401 && !originalRequest._retry) {
+    if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       if (!refreshPromise) {
         refreshPromise = api
           .post("/auth/refresh-token", {}, { withCredentials: true })
           .then(({ data }) => {
+            const newToken = data.accessToken;
             Cookies.set("accessToken", data.accessToken, {
               expires: 30,
               secure: true,
               sameSite: "Strict",
             });
-            return data.accessToken;
+            return newToken;
           })
-          .catch((e) => {
+          .catch((err) => {
             Cookies.remove("accessToken");
             window.location.href = "/torino";
-            throw e;
+            throw err;
           })
           .finally(() => {
             refreshPromise = null;
           });
       }
-      const newToken = await refreshPromise;
-      originalRequest.headers.Authorization = `Bearer ${newToken}`;
-      return api(originalRequest);
+      try {
+        const newToken = await refreshPromise;
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return api(originalRequest);
+      } catch (refreshError) {
+        return Promise.reject(refreshError);
+      }
     }
     return Promise.reject(err);
   }

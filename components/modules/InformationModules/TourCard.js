@@ -1,4 +1,3 @@
-import React from "react";
 import { WiSunrise } from "react-icons/wi";
 import { cityNamesFa } from "@/utils/cityNamesFa";
 import UTCtoJalali from "@/utils/UTCtoJalali";
@@ -13,6 +12,7 @@ import { formatJalaliDate } from "@/utils/formatJalaliDate";
 import { transportFa } from "@/utils/transportationFa";
 import dayjs from "dayjs";
 dayjs.locale("fa")
+
 function TourCard(props) {
   const {
     title,
@@ -32,6 +32,7 @@ function TourCard(props) {
     if(today.isAfter(end)) return "به اتمام رسیده "
     return "درحال برگزاری"
   }
+  
   return (
     <div className="w-8/10 relative rounded-lg border-gray-200 shadow-sm pt-4 border-[1px] mx-auto my-10 lg:pt-0 lg:my-4 lg:w-full">
       <span className={`text-[12px]  absolute top-2 px-2 py-[2px] left-2 rounded-3xl lg:top-[2px] lg:mt-[2px] ${getTourStatus(startDate,endDate)==="به اتمام رسیده "?"bg-green-300 text-green-500":getTourStatus(startDate,endDate)==="در انتظار شروع"?"bg-blue-300 text-blue-500":"bg-yellow-300 text-yellow-500"}`}>{getTourStatus(startDate,endDate)}</span>

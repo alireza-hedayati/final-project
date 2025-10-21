@@ -1,5 +1,6 @@
+import SEO from "@/components/common/SEO";
 import BookingPage from "@/components/templates/BookingPage";
-import api from "@/utils/api";
+import api from "@/config/api";
 import Cookies from "js-cookie";
 import { notFound } from "next/navigation";
 import { useRouter } from "next/router";
@@ -17,7 +18,18 @@ export default function BookingTour({ data }) {
     }
   }, []);
   if (checking) return <p> در حال بررسی ورود ...</p>;
-  return <BookingPage {...data} />;
+  return (
+    <>
+      <BookingPage {...data} />
+      <SEO
+        title={`رزرو ${data?.title || "تور"}`}
+        description={`رزرو ${
+          data?.title || "تور گردشگری"
+        } با تورینو. قیمت، خدمات و برنامه سفر را مشاهده کنید.`}
+        keywords={`${data?.title}, رزرو تور, تورینو, سفر`}
+      />
+    </>
+  );
 }
 
 export async function getServerSideProps(context) {

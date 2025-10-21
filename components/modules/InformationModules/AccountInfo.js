@@ -7,6 +7,7 @@ import EmailForm from "./EmailForm";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function AccountInfo() {
+
   const [isOpen, setIsOpen] = useState(false);
   const { state } = useUser();
   const mobileNumber = state.user?.mobile;
@@ -19,6 +20,7 @@ function AccountInfo() {
     updateProfile({ ...profile, email: newEmail });
     setIsOpen(false);
   };
+  
   return (
     <div className="border-[1px] border-gray-200 shadow-sm rounded-xl w-8/10 mx-auto p-3 mt-5 lg:py-0 lg:w-14/15">
       <p className="py-3 text-lg font-semibold">اطلاعات حساب کاربری</p>

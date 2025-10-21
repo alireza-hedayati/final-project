@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function MobileMenu() {
+
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const links = [
@@ -33,6 +34,7 @@ export default function MobileMenu() {
       icon: <IoCallOutline />,
     },
   ];
+  
   return (
     <div>
       <button
@@ -60,6 +62,7 @@ export default function MobileMenu() {
         >
           ✕
         </button>
+      
 
         <ul className="flex flex-col gap-6 p-6 text-lg font-medium my-10">
           {links.map(({ href, label, icon }) => {

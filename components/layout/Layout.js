@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { toPersianDigits } from "@/utils/changeNum";
 import MobileMenu from "../modules/MobileMenu";
 import LoginModal from "../modules/LoginModal";
@@ -28,15 +28,16 @@ function Layout({ children }) {
   const phoneNumber = "7485-021";
   const { state } = useUser();
   const router = useRouter();
+
   return (
     <div className="w-full min-h-screen flex flex-col">
       <header className="flex items-center justify-between px-6 py-2 shadow-lg border-b border-gray-100 lg:px-8 xl:px-4">
-        <div className="block lg:hidden xl:hidden">
+        <div className="flex gap-5 lg:hidden xl:hidden">
           <MobileMenu />
         </div>
 
-        <div className="hidden lg:flex lg: xl:flex items-center justify-between gap-20">
-          <div className="">
+        <nav className="hidden lg:flex lg: xl:flex items-center justify-between gap-20">
+          <div>
             <Link href="/torino">
               <Image
                 src="/images/logo.webp"
@@ -46,6 +47,7 @@ function Layout({ children }) {
               />
             </Link>
           </div>
+
           <ul className="flex items-center justify-between gap-5">
             {links.map(({ href, label }) => {
               const isActive = router.pathname === href;
@@ -60,7 +62,7 @@ function Layout({ children }) {
               );
             })}
           </ul>
-        </div>
+        </nav>
         {state.isLoading ? (
           <LoginButtonSkeleton />
         ) : state.isAuthenticated ? (

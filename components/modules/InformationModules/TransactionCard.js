@@ -1,8 +1,10 @@
-import React from "react";
 import { toPersianDigits } from "@/utils/changeNum";
 import formatTransactionDate from "@/utils/formatTransactionDate";
+
 function TransactionCard(props) {
+
   const { amount, createdAt, id } = props;
+  
   return (
     <tr className="">
       <td className="w-32 px-4 text-[12px]  text-gray-500 text-center lg:w-38 lg:text-[14px]">

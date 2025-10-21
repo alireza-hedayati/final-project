@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
 function InformationPage() {
+  
   const [profile, setProfile] = useState(true);
   const [myTours, setMyTours] = useState(false);
   const [transaction, setTransaction] = useState(false);
@@ -23,8 +24,9 @@ function InformationPage() {
     }
   }, []);
   if (checking) return <p>در حال بارگزاری...</p>;
+
   return (
-    <div className="lg:flex lg:w-full lg:justify-center gap-20 lg:items-start lg:mx-auto">
+    <main className="lg:flex lg:w-full lg:justify-center gap-20 lg:items-start lg:mx-auto">
       <div className="lg:w-3/15 lg:mt-10">
          
           <Navbar
@@ -52,7 +54,7 @@ function InformationPage() {
           <Transactions />
         </div>
       )}
-    </div>
+    </main>
   );
 }
 

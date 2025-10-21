@@ -1,6 +1,6 @@
-import React from "react";
 
 function Header() {
+
   return (
     <div className="w-9/10 mx-auto flex flex-col items-center mt-5 md:w-8/10 lg:hidden">
       <h3 className="text-green-500 font-semibold text-xl md:text-2xl ">

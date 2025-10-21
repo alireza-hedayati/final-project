@@ -1,9 +1,10 @@
-import api from "@/utils/api";
+import api from "@/config/api";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
 const checkOtp = ({ onLoginSuccess }) => {
+  
   return useMutation({
     mutationFn: async (data) => {
       return api.post("/auth/check-otp", data);

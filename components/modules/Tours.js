@@ -5,6 +5,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import TourCardSkeleton from "./Skeletons/TourCardSkeleton";
 
 function Tours({ data, loading }) {
+  
   const [visibleCount, setVisibleCount] = useState(4);
 
   if (loading) {

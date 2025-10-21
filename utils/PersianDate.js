@@ -5,7 +5,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 
 export default function PersianDateInput({ date, setDate }) {
   const tailwindInputStyles =
-    "border-none outline-none text-gray-700 rounded-md ";
+    "border-none outline-none rounded-md " + "text-gray-700" + "dark:text-gray-400";
   return (
     <DatePicker
       calendar={persian}

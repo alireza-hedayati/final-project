@@ -1,19 +1,40 @@
 import PersianDateInput from "@/utils/PersianDate";
-import React, { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { PiGlobe } from "react-icons/pi";
 import { SlCalender } from "react-icons/sl";
 import OriginDropdown from "./SearchForm/OriginDropdown";
 import DestinationDropdown from "./SearchForm/DestinationDropdown";
 import { cityNamesFa } from "@/utils/cityNamesFa";
+import useDebounce from "@/hooks/useDebounce";
+
 
 function SearchSec({ onSearch, origins, destinations }) {
+  
+  const isFirstRender = useRef(true);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [dateObject, setDateObject] = useState(null);
   const [showOriginDropdown, setShowOriginDropdown] = useState(false);
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
-
+  const formattedDate = dateObject?.toDate
+    ? dateObject.toDate().toISOString().split("T")[0]
+    : null;
+  const debouncedOrigin = useDebounce(origin);
+  const debouncedDestination = useDebounce(destination);
+  const debouncedDate = useDebounce(formattedDate, 500);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (!debouncedOrigin && !debouncedDestination && !debouncedDate) return;
+    onSearch({
+      originId: debouncedOrigin,
+      destinationId: debouncedDestination,
+      startDate: debouncedDate,
+    });
+  }, [debouncedDate, debouncedDestination, debouncedOrigin]);
   const submitHandler = (e) => {
     e.preventDefault();
     let queryDate = null;
@@ -30,11 +51,11 @@ function SearchSec({ onSearch, origins, destinations }) {
   };
 
   return (
-    <div className="w-fit px-10 mx-auto xl:px-2">
-      <h2 className="text-center text-xl my-8">
+    <main className="w-fit px-10 mx-auto xl:px-2">
+      <h1 className="text-center text-xl my-8">
         <span className="text-green-500">تورینو</span> برگزار کننده بهترین تور
         های داخلی و خارجی
-      </h2>
+      </h1>
 
       <form onSubmit={submitHandler}>
         <div className=" flex flex-col border-0 py-4 gap-4  lg:flex-row lg:border-gray-300 lg:border-2 lg:rounded-xl lg:py-0 lg:mx-auto lg:items-center">
@@ -45,7 +66,9 @@ function SearchSec({ onSearch, origins, destinations }) {
                 onClick={() => setShowOriginDropdown((prev) => !prev)}
               >
                 <CiLocationOn fontSize={25} color="gray" />
-                <span className={`${origin ? "text-black" : "text-gray-400"}`}>
+                <span
+                  className={` ${origin ? "text-black" : "text-gray-400"} `}
+                >
                   {origin
                     ? cityNamesFa[
                         origins.find((item) => item.id === origin)?.name
@@ -75,7 +98,7 @@ function SearchSec({ onSearch, origins, destinations }) {
               >
                 <PiGlobe fontSize={25} color="gray" />
                 <span
-                  className={`${destination ? "text-black" : "text-gray-400"}`}
+                  className={`${destination ? "text-black" : "text-gray-400"} `}
                 >
                   {destination
                     ? cityNamesFa[
@@ -115,7 +138,7 @@ function SearchSec({ onSearch, origins, destinations }) {
           </div>
         </div>
       </form>
-    </div>
+    </main>
   );
 }
 

@@ -1,6 +1,5 @@
-import api from "@/utils/api";
+import api from "@/config/api";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import TourCard from "./TourCard";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
@@ -13,8 +12,13 @@ function MyTours() {
     },
   });
   if (isLoading) {
-    return <div className="mt-10 lg:w-14/15 lg:p-0 lg:m-0 "><ProfileSkeleton/></div>;
+    return (
+      <div className="mt-10 lg:w-14/15 lg:p-0 lg:m-0 ">
+        <ProfileSkeleton />
+      </div>
+    );
   }
+  
   return (
     <>
       {tours?.length > 0 ? (

@@ -1,4 +1,3 @@
-import React from "react";
 
 function ChooseUs() {
   return (
@@ -10,7 +9,7 @@ function ChooseUs() {
         <p className="text-lg py-3 text-gray-700 font-semibold">
           💬 پشتیبانی ۲۴ ساعته
         </p>
-        <p className="hidden md:block md:text-gray-500">
+        <p className="hidden md:block md:text-gray-500" style={{fontFamily:"YekanBakh"}}>
           در تمام مراحل سفر، تیم پشتیبانی تورینو در دسترس شماست تا هیچ لحظه‌ای
           از سفرتون نگران نباشید.
         </p>
@@ -19,7 +18,7 @@ function ChooseUs() {
         <p className="text-lg py-3 font-semibold text-gray-700">
           🌍 پوشش کامل تورهای داخلی و خارجی
         </p>
-        <p className="hidden md:block md:text-gray-500 ">
+        <p className="hidden md:block md:text-gray-500 " style={{fontFamily:"YekanBakh"}}>
           از شمال ایران تا قلب اروپا؛ ما با بهترین برگزارکنندگان و هتل‌ها همکاری
           می‌کنیم.
         </p>
@@ -28,7 +27,7 @@ function ChooseUs() {
         <p className="text-lg py-3 font-semibold text-gray-700">
           🏨 انتخاب آزاد خدمات رفاهی و تفریحی
         </p>
-        <p className="hidden md:block md:text-gray-500 ">
+        <p className="hidden md:block md:text-gray-500 " style={{fontFamily:"YekanBakh"}}>
           شما می‌توانید خدمات مورد نظرتان (اقامت، وعده‌های غذایی، ترنسفر و...)
           را بر اساس نیاز خود انتخاب کنید.
         </p>
@@ -37,7 +36,7 @@ function ChooseUs() {
         <p className="text-lg py-3 font-semibold text-gray-700">
           ✈️ همکاری با برترین ایرلاین‌ها و هتل‌ها
         </p>
-        <p className="hidden md:block md:text-gray-500 ">
+        <p className="hidden md:block md:text-gray-500 " style={{fontFamily:"YekanBakh"}}>
           تجربه‌ی سفری مطمئن و لوکس با معتبرترین شرکت‌های بین‌المللی.
         </p>
       </div>
@@ -45,7 +44,7 @@ function ChooseUs() {
         <p className="text-lg py-3 font-semibold text-gray-700">
           💰 قیمت شفاف و بدون هزینه‌ی پنهان
         </p>
-        <p className="hidden md:block md:text-gray-500 ">
+        <p className="hidden md:block md:text-gray-500 " style={{fontFamily:"YekanBakh"}}>
           در تورینو، همه چیز از ابتدا مشخص است؛ بدون هزینه‌های اضافه یا مبهم.
         </p>
       </div>
@@ -53,7 +52,7 @@ function ChooseUs() {
         <p className="text-lg py-3 font-semibold text-gray-700">
           🧭 برنامه‌ریزی دقیق و زمان‌بندی منظم
         </p>
-        <p className="hidden lg:block md:block md:text-gray-500">
+        <p className="hidden lg:block md:block md:text-gray-500" style={{fontFamily:"YekanBakh"}}>
           همه‌ی تورها با دقت و نظم بالا طراحی می‌شوند تا شما فقط از سفر لذت
           ببرید.
         </p>

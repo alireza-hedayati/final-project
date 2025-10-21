@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { BiGroup } from "react-icons/bi";
 import { LiaMapSolid } from "react-icons/lia";
@@ -35,10 +34,11 @@ function DetailsPage(props) {
     endDate,
     availableSeats,
   } = props;
+
   return (
     <div
       className="lg:w-9/10 lg:px-5
-    lg:rounded-2xl lg:shadow-[5px_5px_12px_#bebebe,-5px_-5px_12px_#ffffff] lg:mx-auto lg:py-2 lg:my-5"
+    lg:rounded-2xl lg:shadow-[5px_5px_12px_#bebebe,-5px_-5px_12px_#ffffff] lg:mx-auto lg:py-2 lg:my-5 "
     >
       <div className="w-fit mx-auto py-10 flex flex-col items-center  lg:flex-row lg:w-full lg:py-5 ">
         <div className="relative w-[320px] h-[220px] md:w-[397px] md:h-[265px] lg:w-[350px] lg:h-[250px]">
@@ -52,8 +52,12 @@ function DetailsPage(props) {
 
         <div className="w-full lg:px-5">
           <div className="w-full flex items-center justify-between  py-4 md:px-2 lg:flex-col lg:items-start lg:py-3 lg:gap-5">
-            <p className="text-lg font-bold md:text-xl">{title}</p>
-            <p className="text-sm text-gray-600 md:text-base">{duration}</p>
+            <p className="text-lg font-bold md:text-xl">
+              {title}
+            </p>
+            <p className="text-sm text-gray-600 md:text-base ">
+              {duration}
+            </p>
           </div>
 
           <div className="w-full flex items-center justify-between py-4 px-2 lg:w-8/10">
@@ -74,7 +78,7 @@ function DetailsPage(props) {
             <div className="flex flex-col">
               <p
                 className="flex justify-center
-           items-center gap-1"
+           items-center gap-1 "
               >
                 {fleetVehicle === "bus" ? (
                   <IoBus />
@@ -91,32 +95,34 @@ function DetailsPage(props) {
                 )}
                 حمل و نقل
               </p>
-              <p className="text-center text-sm text-gray-600 py-1">
+              <p className="text-center text-sm text-gray-600 py-1 ">
                 {transportFa[fleetVehicle]}
               </p>
             </div>
 
             <div className="flex flex-col">
-              <p className="flex items-center justify-center gap-1">
+              <p className="flex items-center justify-center gap-1 ">
                 <IoIosContacts />
                 ظرفیت
               </p>
-              <p className="text-center text-sm text-gray-600 py-1">
+              <p className="text-center text-sm text-gray-600 py-1 ">
                 {capacity}
               </p>
             </div>
 
             <div className="flex flex-col">
-              <p className="flex items-center justify-center gap-1">
+              <p className="flex items-center justify-center gap-1 ">
                 <IoShield />
                 بیمه
               </p>
               {insurance ? (
-                <p className="text-center text-sm text-gray-600 py-1">
+                <p className="text-center text-sm text-gray-600 py-1 ">
                   {insurancePrice}
                 </p>
               ) : (
-                <p className="text-center text-sm text-gray-600 py-1">ندارد</p>
+                <p className="text-center text-sm text-gray-600 py-1 ">
+                  ندارد
+                </p>
               )}
             </div>
           </div>
@@ -140,9 +146,9 @@ function DetailsPage(props) {
                 ? "ظرفیت محدود"
                 : " رزرو و خرید"}
             </Link>
-            <p className="flex items-center gap-1 text-green-500 text-xl font-semibold md:text-2xl">
+            <p className="flex items-center gap-1 text-green-500 text-xl font-semibold md:text-2xl ">
               {toPersianDigits(price.toLocaleString())}
-              <span className="text-sm text-gray-700 font-medium">تومان</span>
+              <span className="text-sm text-gray-700 font-medium ">تومان</span>
             </p>
           </div>
         </div>
@@ -154,19 +160,19 @@ function DetailsPage(props) {
             <GiRoad />
             مبدا
           </p>
-          <p>{cityNamesFa[origin.name]}</p>
+          <p className="">{cityNamesFa[origin.name]}</p>
         </div>
         <div className="tour-info-box">
           <p className="tour-info">
             <SlCalender /> تاریخ رفت
           </p>
-          <p>{toPersianDigits(UTCtoJalali(startDate))}</p>
+          <p className="">{toPersianDigits(UTCtoJalali(startDate))}</p>
         </div>
         <div className="tour-info-box">
           <p className="tour-info">
             <SlCalender /> تاریخ برگشت
           </p>
-          <p>{toPersianDigits(UTCtoJalali(endDate))}</p>
+          <p className="">{toPersianDigits(UTCtoJalali(endDate))}</p>
         </div>
         <div className="flex flex-col justify-center items-center w-full gap-1">
           <p className="tour-info">
@@ -185,15 +191,15 @@ function DetailsPage(props) {
             )}
             حمل و نقل
           </p>
-          <p>{transportFa[fleetVehicle]}</p>
+          <p className="">{transportFa[fleetVehicle]}</p>
         </div>
 
         <div className="tour-info-box">
           <p className="tour-info">
             <IoIosContacts />
-           حداکثر ظرفیت
+            حداکثر ظرفیت
           </p>
-          <p>{availableSeats ? capacity : "اتمام ظرفیت"}</p>
+          <p className="">{availableSeats ? capacity : "اتمام ظرفیت"}</p>
         </div>
 
         <div className="tour-info-box">
@@ -201,7 +207,7 @@ function DetailsPage(props) {
             <IoShield />
             بیمه
           </p>
-          {insurance ? <p>{insurancePrice}</p> : <p>ندارد</p>}
+          {insurance ? <p className="">{insurancePrice}</p> : <p className="">ندارد</p>}
         </div>
       </div>
     </div>

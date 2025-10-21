@@ -1,7 +1,8 @@
-import React from "react";
 import Image from "next/image";
 import { toPersianDigits } from "@/utils/changeNum";
+
 function SocialMedia() {
+  
   return (
     <div className="w-9/10 flex flex-col items-center mx-auto mt-12 md:mt-15 md:w-8/10">
       <p className="text-green-500 text-lg font-semibold md:text-xl">

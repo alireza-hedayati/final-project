@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+
 function CallToAction() {
   return (
     <div className="w-7/10 mx-auto mt-7 md:mt-10">

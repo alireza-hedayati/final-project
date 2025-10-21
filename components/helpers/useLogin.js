@@ -1,9 +1,10 @@
 import Success from "@/utils/successToast";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import api from "@/utils/api";
+import api from "@/config/api";
 
 const useLogin = (onSuccessStepChange) => {
+  
   return useMutation({
     mutationFn: (data) => api.post("/auth/send-otp", data),
     onSuccess: (response) => {

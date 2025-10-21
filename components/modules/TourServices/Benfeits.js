@@ -54,7 +54,7 @@ function Benfeits() {
             </span>
             <span> پذیرایی و وعده‌های غذایی</span>
           </p>
-          <p className="py-1 text-sm text-center px-4 text-gray-600 gap-1 hidden lg:block ">
+          <p className="py-1 text-sm text-center px-4 text-gray-600 gap-1 hidden lg:block " style={{fontFamily:"YekanBakh"}}>
             صبحانه، ناهار و شام با منوهای محلی و بین‌المللی، متناسب با برنامه‌ی
             هر تور و سلیقه‌ی مسافران.
           </p>
@@ -75,7 +75,7 @@ function Benfeits() {
             </span>
             <span>بیمه و پشتیبانی مسافرتی</span>
           </p>
-          <p className="py-2 text-sm text-gray-600 px-4 text-center hidden lg:block">
+          <p className="py-2 text-sm text-gray-600 px-4 text-center hidden lg:block" style={{fontFamily:"YekanBakh"}}>
              تورها تحت پوشش بیمه کامل مسافرتی هستند و تیم پشتیبانی ما ۲۴ ساعته
              در کنار شماست.
           </p>
@@ -95,7 +95,7 @@ function Benfeits() {
             </span>
             <span> راهنمایان و تور لیدرهای حرفه‌ای</span>
           </p>
-          <p className="py-2 text-sm text-center px-4 text-gray-600 hidden lg:block">
+          <p className="py-2 text-sm text-center px-4 text-gray-600 hidden lg:block" style={{fontFamily:"YekanBakh"}}>
             راهنمایان با تجربه و مسلط به زبان‌های مختلف، همراه شما در طول مسیر
             برای یک تجربه‌ی امن و لذت‌بخش.
           </p>
@@ -115,7 +115,7 @@ function Benfeits() {
             </span>
             <span>خدمات حمل‌ونقل و جابجایی</span>
           </p>
-          <p className="py-1 text-sm text-center px-4 text-gray-600 hidden lg:block">
+          <p className="py-1 text-sm text-center px-4 text-gray-600 hidden lg:block" style={{fontFamily:"YekanBakh"}}>
             از رزرو بلیت تا ترنسفر فرودگاهی و جابه‌جایی در طول سفر، همه چیز با
             هماهنگی کامل انجام می‌شود.
           </p>
@@ -136,7 +136,7 @@ function Benfeits() {
             </span>
             <span> اقامت در بهترین مراکز اقامتی</span>
           </p>
-          <p className="hidden lg:block py-2 text-gray-600 text-center px-4 text-sm">
+          <p className="hidden lg:block py-2 text-gray-600 text-center px-4 text-sm" style={{fontFamily:"YekanBakh"}}>
             اقامت در بهترین هتل‌ها، اقامتگاه‌های بوم‌گردی و سوئیت‌های مجهز
             متناسب با نوع تور و بودجه شما.
           </p>
@@ -157,7 +157,7 @@ function Benfeits() {
             </span>
             <span>خدمات ویژه</span>
           </p>
-          <p className="py-1 text-sm text-center px-4 text-gray-600 hidden lg:block">
+          <p className="py-1 text-sm text-center px-4 text-gray-600 hidden lg:block" style={{fontFamily:"YekanBakh"}}>
             تورهای خصوصی، VIP، گروهی و شرکتی، با امکان طراحی برنامه اختصاصی بر
             اساس نیاز شما.
           </p>

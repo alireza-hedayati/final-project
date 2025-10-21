@@ -1,16 +1,15 @@
 import useProfile from "@/hooks/useProfile";
-import React, { useState } from "react";
-import InformationForm from "../modules/InformationModules/InformationForm";
-import { IoPerson } from "react-icons/io5";
+import { useState } from "react";
 import { toPersianDigits } from "@/utils/changeNum";
 import { toast } from "react-toastify";
-import api from "@/utils/api";
+import api from "@/config/api";
 import { useRouter } from "next/router";
 import CheckoutForm from "../modules/CheckoutForm/CheckoutForm";
 
 function BookingPage(props) {
+  
   const { title, id: tourId, duration, price } = props;
-  const { profile, isLoading } = useProfile();
+  const { profile } = useProfile();
   const router = useRouter();
   const [passengerInfo, setPassengerInfo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -44,10 +43,10 @@ function BookingPage(props) {
         return;
       }
       await api.put(`/basket/${tourId}`);
-      console.log(passenger)
+      console.log(passenger);
       await api.post("/order", passenger);
       toast.success("خرید شما با موفقیت ثبت شد 🎉");
-      sessionStorage.setItem("purchaseSuccess","true")
+      sessionStorage.setItem("purchaseSuccess", "true");
       router.push("/torino/booking/success");
     } catch (err) {
       toast.error("مشکل در ثبت سفارش دوباره تلاش کنید.");
@@ -56,7 +55,6 @@ function BookingPage(props) {
     }
   };
 
- 
   return (
     <div className="lg:flex lg:items-start lg:justify-center lg:mx-auto lg:w-[88%]">
       <div>

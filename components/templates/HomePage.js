@@ -1,15 +1,15 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Banner from "../modules/Banner";
 import SearchSec from "../modules/SearchSec";
 import Tours from "../modules/Tours";
 import PhoneBanner from "../modules/PhoneBanner";
 import WhyUs from "../modules/WhyUs";
 import Features from "../modules/Features";
-import api from "@/utils/api";
+import api from "@/config/api";
 import { useRouter } from "next/router";
 
-
 function extractUniqueCities(data, key) {
+  
   const citiesMap = new Map();
   data.forEach((tour) => {
     const city = tour[key];

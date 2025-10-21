@@ -1,7 +1,7 @@
-import React from "react";
 import Carousel from "../../utils/Carousel";
 
 function WhyUs() {
+
   return (
     <div className="w-fit mx-auto px-12 lg:flex lg:px-15 lg:items-center lg:gap-50 lg:justify-between xl:w-full xl:justify-center xl:gap-80">
       <div className="w-fit  lg:flex-col ">
@@ -13,12 +13,14 @@ function WhyUs() {
               alt="Why Us"
             />
           </div>
-          <p className="text-2xl font-semibold">
+          <p className="text-2xl font-semibold ">
             چرا <span className="text-green-500">تورینو</span>؟
           </p>
         </div>
-        <p className="hidden md:block text-lg py-3">تور طبیعت گردی و تاریخی </p>
-        <p className="hidden lg:block lg:w-[400px]">
+        <p className="hidden md:block text-lg py-3 font-semibold ">
+          تور طبیعت گردی و تاریخی{" "}
+        </p>
+        <p className="hidden lg:block lg:w-[400px] text-lg leading-8 ">
           اگر دوست داشته باشید که یک جاذبه طبیعی را از نزدیک ببینید و در دل
           طبیعت چادر بزنید یا در یک اقامتگاه بوم گردی اتاق بگیرید، باید تورهای
           طبیعت‌گردی را خریداری کنید. اما اگر بخواهید از جاذبه‌های گردشگری و

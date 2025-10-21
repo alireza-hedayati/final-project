@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BiSolidPlaneAlt } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
-
 import Link from "next/link";
 
 function SuccessPage() {
+  
   const router = useRouter();
   const [progress, setProgress] = useState(0);
   useEffect(() => {
@@ -30,9 +30,8 @@ function SuccessPage() {
     return () => clearInterval(timer);
   }, [router]);
 
-
   return (
-    <div className="my-20">
+    <main className="my-20">
       <div className="w-8/10 mx-auto mt-20 flex items-center justify-center gap-2 lg:mt-20">
         <span className="text-xl font-semibold">Torino</span>
         <div className="flex items-center justify-center">
@@ -68,7 +67,7 @@ function SuccessPage() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

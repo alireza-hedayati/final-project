@@ -1,10 +1,11 @@
 import OTPInput from "react-otp-input";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import otpValidationSchema from "@/validation/OtpValidation";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function OtpForm({ onSubmit, resetKey = null, isLoading = false, timeLeft }) {
+  
   const {
     handleSubmit,
     control,

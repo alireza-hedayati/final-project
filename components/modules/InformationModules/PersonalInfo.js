@@ -3,6 +3,7 @@ import { PiPencilSimpleLine } from "react-icons/pi";
 import InformationForm from "./InformationForm";
 import useProfile from "@/hooks/useProfile";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
+
 function PersonalInfo() {
   const [isOpen, setIsOpen] = useState(false);
   const { profile, isLoading, updateProfile } = useProfile();
@@ -23,6 +24,7 @@ function PersonalInfo() {
     setIsOpen(false);
   };
   if (isLoading)
+    
     return (
       <div className="w-full lg:w-14/15 mx-auto mt-10">
         <ProfileSkeleton />

@@ -1,4 +1,3 @@
-import React from "react";
 import { MdOutlinePerson } from "react-icons/md";
 import { GiStripedSun } from "react-icons/gi";
 import { GrTransaction } from "react-icons/gr";

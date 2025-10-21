@@ -1,9 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 function EmailForm({ onSave }) {
+
   const emailSchema = yup.object().shape({
     email: yup
       .string()
@@ -21,6 +21,7 @@ function EmailForm({ onSave }) {
   const submitHandler = (data) => {
     onSave(data.email);
   };
+  
   return (
     <form
       onSubmit={handleSubmit(submitHandler)}
