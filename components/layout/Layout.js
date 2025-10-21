@@ -14,15 +14,17 @@ import { useRouter } from "next/router";
 function Layout({ children }) {
   const links = [
     {
+      id: 1,
       href: "/torino",
       label: "صفحه اصلی",
     },
     {
+      id: 2,
       href: "/torino/services",
       label: "خدمات گردشگری",
     },
-    { href: "/torino/about-us", label: "درباره ما" },
-    { href: "/torino/contact-us", label: "تماس با ما" },
+    { id: 3, href: "/torino/about-us", label: "درباره ما" },
+    { id: 4, href: "/torino/contact-us", label: "تماس با ما" },
   ];
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "7485-021";
@@ -38,24 +40,21 @@ function Layout({ children }) {
 
         <nav className="hidden lg:flex lg: xl:flex items-center justify-between gap-20">
           <div>
-            <Link href="/torino">
-              <Image
-                src="/images/logo.webp"
-                alt="logo"
-                width={80}
-                height={80}
-              />
+            <Link aria-label="لوگو" href="/torino">
+              <div className="relative w-[146px] h-[44px] border-0">
+                <Image src="/images/logo.webp" alt="logo" fill />
+              </div>
             </Link>
           </div>
 
           <ul className="flex items-center justify-between gap-5">
-            {links.map(({ href, label }) => {
+            {links.map(({ id,href, label }) => {
               const isActive = router.pathname === href;
               return (
-                <li
+                <li key={id}
                   className={`${isActive ? "text-green-500" : "text-gray-700"}`}
                 >
-                  <Link key={href} href={href}>
+                  <Link aria-label="لینک-صفحات" key={href} href={href}>
                     {label}
                   </Link>
                 </li>
@@ -86,80 +85,69 @@ function Layout({ children }) {
             <p className="footer-titles">تورینو</p>
             <ul>
               <li className="footer-items">
-                <Link href="/torino/about-us">درباره ما</Link>
+                <Link aria-label="صفحه-درباره-ما" href="/torino/about-us">
+                  درباره ما
+                </Link>
               </li>
-              <li className="footer-items">
+              <li aria-label="صفحه-تماس-با-ما" className="footer-items">
                 <Link href="/torino/contact-us">تماس با ما</Link>
               </li>
               <li className="footer-items">
-                <Link href="/torino/services">چرا تورینو</Link>
+                <Link aria-label="معرفی-تورینو" href="/torino/services">
+                  چرا تورینو
+                </Link>
               </li>
-              <li className="footer-items">
-                <Link href="#">بیمه مسافرتی</Link>
-              </li>
+              <li className="footer-items">بیمه مسافرتی</li>
             </ul>
           </div>
           <div>
             <p className="footer-titles">خدمات مشتریان</p>
             <ul>
-              <li className="footer-items">
-                <Link href="#">پشتیبانی آنلاین</Link>
-              </li>
-              <li className="footer-items">
-                <Link href="#">راهنمای خرید</Link>
-              </li>
-              <li className="footer-items">
-                <Link href="#">راهنمای استرداد</Link>
-              </li>
-              <li className="footer-items">
-                <Link href="#">پرسش و پاسخ</Link>
-              </li>
+              <li className="footer-items">پشتیبانی آنلاین</li>
+              <li className="footer-items">راهنمای خرید</li>
+              <li className="footer-items">راهنمای استرداد</li>
+              <li className="footer-items">پرسش و پاسخ</li>
             </ul>
           </div>
 
           <div className="w-full flex items-center justify-center flex-col md:w-auto xl:w-auto">
             <div className=" xl:self-end">
-              <Image
-                src="/images/logo.webp"
-                alt="logo"
-                width={80}
-                height={50}
-              />
+              <div className="relative w-[100px] h-[30px] xl:w-[146px] xl:h-[44px]">
+                <Image
+                  src="/images/logo.webp"
+                  alt="logo"
+                  width={80}
+                  height={50}
+                />
+              </div>
               <p dir="rtl" className="text-right">
                 تلفن پشتیبانی:{toPersianDigits(phoneNumber)}
               </p>
             </div>
             <div className=" flex items-center justify-between gap-5 mt-7">
-              <Image
-                src="/images/airplane.webp"
-                alt="airplane"
-                width={50}
-                height={20}
-              />
-              <Image
-                src="/images/passenger-rights.webp"
-                alt="passenger-rights"
-                width={50}
-                height={20}
-              />
-              <Image
-                src="/images/ecunion.webp"
-                alt="ecunion"
-                width={50}
-                height={20}
-              />
-              <Image
-                src="/images/samandehi.webp"
-                alt="samandehi"
-                width={50}
-                height={20}
-              />
-              <Image
-                src="/images/aira.webp"
-                alt="aira"
-                width={50}
-                height={20}
-              />
+              <div className="relative w-[34px] h-[38px] xl:w-[67px] xl:h-[74px]">
+                <Image src="/images/airplane.webp" alt="airplane" fill />
+              </div>
+
+              <div className="relative w-[34px] h-[38px] xl:w-[67px] xl:h-[74px]">
+                <Image
+                  src="/images/passenger-rights.webp"
+                  alt="passenger-rights"
+                  fill
+                />
+              </div>
+
+              <div className="relative w-[34px] h-[38px] xl:w-[67px] xl:h-[74px]">
+                <Image src="/images/ecunion.webp" alt="ecunion" fill />
+              </div>
+
+              <div className="relative w-[34px] h-[38px] xl:w-[67px] xl:h-[74px]">
+                <Image src="/images/samandehi.webp" alt="samandehi" fill />
+              </div>
+
+              <div className="relative w-[34px] h-[38px] xl:w-[67px] xl:h-[74px]">
+                <Image src="/images/aira.webp" alt="aira" fill />
+              </div>
             </div>
           </div>
         </div>

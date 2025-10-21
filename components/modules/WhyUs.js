@@ -1,17 +1,13 @@
 import Carousel from "../../utils/Carousel";
+import { MdOutlineQuestionMark } from "react-icons/md";
 
 function WhyUs() {
-
   return (
     <div className="w-fit mx-auto px-12 lg:flex lg:px-15 lg:items-center lg:gap-50 lg:justify-between xl:w-full xl:justify-center xl:gap-80">
       <div className="w-fit  lg:flex-col ">
         <div className="flex items-center gap-1">
-          <div className="bg-green-800 rounded-full px-3 py-2 w-fit">
-            <img
-              className="w-[10px]"
-              src="/images/question-mark.webp"
-              alt="Why Us"
-            />
+          <div className="bg-green-800 rounded-full px-2 py-2 w-fit">
+            <MdOutlineQuestionMark color="white" size={20} />
           </div>
           <p className="text-2xl font-semibold ">
             چرا <span className="text-green-500">تورینو</span>؟

@@ -10,16 +10,15 @@ import { useUser } from "@/context/UserContext";
 import { toPersianDigits } from "@/utils/changeNum";
 
 function LoginModal({ setIsOpen }) {
-
   const [step, setStep] = useState(1);
   const [userNumber, setUserNumber] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
 
   const { dispatch } = useUser();
-
   const handleLoginSuccess = ({ mobile }) => {
     setIsOpen(false);
-    
+
+
     dispatch({
       type: "LOGIN_SUCCESS",
       payload: { user: { mobile: mobile || userNumber } },
@@ -65,7 +64,7 @@ function LoginModal({ setIsOpen }) {
       code: data.code,
     });
   };
-  
+
   return (
     <div
       onClick={() => setIsOpen(false)}
@@ -77,6 +76,7 @@ function LoginModal({ setIsOpen }) {
           className="flex flex-col items-center justify-center bg-white rounded-xl p-2 w-[400px] relative"
         >
           <button
+            aria-label="بستن-لاگین"
             onClick={() => setIsOpen(false)}
             className="absolute top-2 left-4 cursor-pointer hover:opacity-50"
           >
@@ -111,6 +111,7 @@ function LoginModal({ setIsOpen }) {
           className="flex flex-col items-center justify-center bg-white rounded-xl px-2 py-4 w-[400px] relative"
         >
           <button
+            aria-label="برگشت-به-عقب"
             onClick={() => setStep(1)}
             className="absolute top-2 left-4 cursor-pointer hover:opacity-50"
           >

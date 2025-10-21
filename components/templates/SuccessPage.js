@@ -60,6 +60,7 @@ function SuccessPage() {
           ></div>
 
           <Link
+          aria-label="صفحه-اصلی"
             href="/torino"
             className="absolute inset-0 flex items-center justify-center text-white font-medium z-10 select-none"
           >

@@ -8,7 +8,6 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { toPersianDigits } from "@/utils/changeNum";
 
 function ProfileDropDown() {
-
   const [isOpen, setIsOpen] = useState(false);
   const { state, dispatch } = useUser();
   const router = useRouter();
@@ -18,10 +17,11 @@ function ProfileDropDown() {
     setIsOpen(false);
     router.push("/torino");
   };
-  
+
   return (
     <div className="relative">
       <button
+        aria-label="دراپ-دون"
         onClick={() => setIsOpen(!isOpen)}
         className="text-green-500 cursor-pointer border-0 rounded-lg px-2 py-1 flex items-center gap-1 hover:border-green-600 hover:text-green-600"
       >
@@ -43,16 +43,15 @@ function ProfileDropDown() {
             <p className="text-sm">{displayInfo}</p>
           </div>
           <Link
+          aria-label="لینک-اطلاعات-کاربر"
             href="/torino/information"
             className="flex items-center justify-start gap-1 text-sm px-2 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 hover:rounded-lg "
             onClick={() => setIsOpen(false)}
           >
             <span>
-              <RiAccountCircleLine
-                fontSize={20}
-              />
+              <RiAccountCircleLine fontSize={20} />
             </span>
-            <p > اطلاعات حساب کاربری</p>
+            <p> اطلاعات حساب کاربری</p>
           </Link>
           <div
             onClick={handleLogout}

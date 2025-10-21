@@ -77,6 +77,7 @@ function BookingPage(props) {
         </div>
         <div className="flex justify-center items-center w-full">
           <button
+          aria-label="ثبت-نهایی"
             onClick={handleBooking}
             disabled={loading}
             className="bg-green-500 text-white rouded-lg w-9/10 rounded-lg py-1 cursor-pointer hover:bg-green-600"

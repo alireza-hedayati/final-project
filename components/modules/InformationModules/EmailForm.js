@@ -38,6 +38,7 @@ function EmailForm({ onSave }) {
       </div>
 
       <button
+      aria-label="تایید-فرم"
         type="submit"
         className="bg-green-500 cursor-pointer px-5 py-1 rounded-md text-white border-0 outline-0 hover:bg-green-700"
       >

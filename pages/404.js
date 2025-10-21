@@ -16,6 +16,7 @@ function Custom404() {
         <div className="flex flex-col gap-2">
           <p className="text-xl font-semibold">صفحه مورد نظر یافت نشد!</p>
           <Link
+          aria-label="بازگشت-به-صفحه-اصلی"
             href="/torino"
             className="w-9/10 text-center mx-auto mt-3 cursor-pointer bg-green-200 text-green-500 rounded-md px-2 py-1 hover:bg-green-300 hover:text-green-600 lg:mt-7"
           >

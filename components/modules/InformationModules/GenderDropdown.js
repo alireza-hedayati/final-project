@@ -5,9 +5,8 @@ import { RiArrowDropUpLine } from "react-icons/ri";
 const options = ["مرد", "زن"];
 
 export default function GenderDropdown({ control, errors }) {
-  
   const [open, setOpen] = useState(false);
- 
+
   return (
     <div>
       <Controller
@@ -19,9 +18,7 @@ export default function GenderDropdown({ control, errors }) {
               onClick={() => setOpen((prev) => !prev)}
               className="flex items-center justify-between px-2 py-1 text-gray-500 "
             >
-             <span>
-                {<p >{field.value}</p> || <span>جنسیت</span>}
-              </span>
+              <span>{field.value || "جنسیت"}</span>
               <span>
                 {open ? (
                   <RiArrowDropUpLine fontSize={25} />

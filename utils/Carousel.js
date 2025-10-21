@@ -24,7 +24,7 @@ export default function Carousel() {
 
   return (
     <div className="w-fit flex flex-col items-center">
-      <div className="relative w-[300px] h-[200px] md:w-[300px] md:h-[200px] lg:w-[200px] lg:h-[260px]">
+      <div className="relative w-[255px] h-[284px] md:w-[300px]  xl:w-[389px] xl:h-[479px] mr-7">
         {images.map((src, index) => {
           const offset = index - currentIndex;
 
@@ -69,17 +69,25 @@ export default function Carousel() {
         })}
       </div>
 
-      <div className="flex items-center gap-4 mt-6 lg:mt-7">
-        <button onClick={nextSlide} className="cursor-pointer hover:opacity-60">
-          <IoIosArrowForward size={24} />
+      <div className="flex items-center gap-4 mt-6 lg:mt-10">
+        <button
+          aria-label="عکس-بعدی"
+          onClick={nextSlide}
+          className="cursor-pointer hover:opacity-60"
+        >
+          <IoIosArrowForward size={28} />
         </button>
 
-        <span className="text-lg font-medium">
+        <span className="text-xl font-medium">
           {currentIndex + 1}/{images.length}
         </span>
 
-        <button onClick={prevSlide} className="cursor-pointer hover:opacity-60">
-          <IoIosArrowBack size={24} />
+        <button
+          aria-label="عکس-قبلی"
+          onClick={prevSlide}
+          className="cursor-pointer hover:opacity-60"
+        >
+          <IoIosArrowBack size={28} />
         </button>
       </div>
     </div>

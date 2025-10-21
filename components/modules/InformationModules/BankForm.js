@@ -21,13 +21,11 @@ function BankForm({ setOpen, setInformation }) {
   });
 
   useEffect(() => {
-    console.log("profile:", profile);
-    if (profile)
-      reset({
-        cardNumber: profile.payment.debitCard_code || "",
-        accountIdentifier: profile.payment.accountIdentifier || "",
-        shebaNumber: profile.payment.shaba_code || "",
-      });
+    reset({
+      cardNumber: profile?.payment?.debitCard_code || "",
+      accountIdentifier: profile?.payment?.accountIdentifier || "",
+      shebaNumber: profile?.payment?.shaba_code || "",
+    });
   }, [reset, profile]);
 
   const submitHandler = (data) => {
@@ -46,7 +44,7 @@ function BankForm({ setOpen, setInformation }) {
             type="tel"
             placeholder="شماره کارت"
             {...register("cardNumber")}
-            className="border-gray-300 border-[1px] rounded-lg w-full text-right py-1 px-2"
+            className="border-gray-300 border-[1px] rounded-lg w-full text-right py-1 px-2 outline-0"
           />
           <span className="text-red-400 text-sm p-1">
             {errors.cardNumber?.message}
@@ -57,7 +55,7 @@ function BankForm({ setOpen, setInformation }) {
             type="tel"
             placeholder="شماره حساب"
             {...register("accountIdentifier")}
-            className="border-gray-300 border-[1px] rounded-lg py-1 px-2 w-full text-right mt-4"
+            className="border-gray-300 border-[1px] rounded-lg py-1 px-2 w-full text-right mt-4 outline-0"
           />
           <span className="text-red-400 text-sm p-1">
             {errors.accountIdentifier?.message}
@@ -69,7 +67,7 @@ function BankForm({ setOpen, setInformation }) {
             inputMode="numeric"
             placeholder="شماره شبا"
             {...register("shebaNumber")}
-            className="border-gray-300 border-[1px] rounded-lg py-1 px-2 w-full text-right mt-4"
+            className="border-gray-300 border-[1px] rounded-lg py-1 px-2 w-full text-right mt-4 outline-0"
           />
           <span className="text-red-400 text-sm p-1">
             {errors.shebaNumber?.message}
@@ -77,12 +75,14 @@ function BankForm({ setOpen, setInformation }) {
         </div>
         <div className="flex items-center justify-between mt-4 w-8/10 mx-auto">
           <button
+            aria-label="تایید-فرم"
             type="submit"
             className="cursor-pointer bg-green-500 w-30 text-white py-1 border-0 rounded-lg hover:bg-green-700"
           >
             تایید
           </button>
           <button
+            aria-label="انصراف-از-تکمیل-فرم"
             className="cursor-pointer text-green-500  py-1 border-green-500 border-[2px] rounded-lg w-30 hover:text-red-400  hover:border-red-400"
             type="button"
             onClick={() => setOpen(false)}

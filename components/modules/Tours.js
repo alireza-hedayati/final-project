@@ -5,7 +5,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import TourCardSkeleton from "./Skeletons/TourCardSkeleton";
 
 function Tours({ data, loading }) {
-  
   const [visibleCount, setVisibleCount] = useState(4);
 
   if (loading) {
@@ -44,7 +43,7 @@ function Tours({ data, loading }) {
 
       <ul
         className="hidden lg:flex lg:flex-wrap lg:w-[900px] md:flex md:flex-wrap md:w-[600px] md:gap-5 xl:flex xl:flex-wrap xl:gap-10 xl:my-5 
-      xl:pr-6
+      xl:justify-center
       xl:transition-all xl:duration-500 xl:ease-in-out xl:w-full"
       >
         {data.map((tour) => (
@@ -59,6 +58,7 @@ function Tours({ data, loading }) {
 
       {data.length > 4 && visibleCount < data.length ? (
         <button
+          aria-label="مشاهده-تور-بیشتر"
           onClick={() => setVisibleCount((prev) => prev + 4)}
           className="flex items-center gap-1 text-gray-500 cursor-pointer hover:opacity-60 md:hidden lg:hidden xl:hidden"
         >
@@ -67,6 +67,7 @@ function Tours({ data, loading }) {
         </button>
       ) : (
         <button
+          aria-label="مشاهده-تور-کمتر"
           onClick={() => setVisibleCount((prev) => prev - 4)}
           className="flex items-center gap-1 text-gray-500 cursor-pointer hover:opacity-60 xl:hidden"
         >

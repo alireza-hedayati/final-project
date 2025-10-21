@@ -128,6 +128,7 @@ function DetailsPage(props) {
           </div>
           <div className="w-full flex items-center justify-between py-5 px-5 md:px-0 lg:flex-row-reverse lg:py-1 lg:px-2">
             <Link
+            aria-label="رزرو"
               href={availableSeats > 0 ? `/torino/booking/${id}` : "#"}
               className={`cursor-pointer ${
                 availableSeats <= 0

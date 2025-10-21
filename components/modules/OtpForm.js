@@ -75,6 +75,7 @@ function OtpForm({ onSubmit, resetKey = null, isLoading = false, timeLeft }) {
         مانده تا ارسال مجدد کد
       </p>
       <button
+      aria-label="ورود"
         type="submit"
         className="btn bg-green-500 border-0 rounded-md py-2 text-white text-lg cursor-pointer w-full hover:bg-green-600"
         disabled={isLoading}

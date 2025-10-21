@@ -17,6 +17,7 @@ let refreshPromise = null;
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
+    console.log(err)
     const originalRequest = err.config;
     if (!err.response) {
       return Promise.reject(error);

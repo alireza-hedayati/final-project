@@ -3,6 +3,7 @@ import { PiPencilSimpleLine } from "react-icons/pi";
 import InformationForm from "./InformationForm";
 import useProfile from "@/hooks/useProfile";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
+import { toPersianDigits } from "@/utils/changeNum";
 
 function PersonalInfo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,7 @@ function PersonalInfo() {
           <div className="flex items-center justify-between">
             <p className="text-lg font-semibold">اطلاعات شخصی</p>
             <button
+            aria-label="ویرایش-اطلاعات"
               className="cursor-pointer flex items-center gap-1 text-blue-500 hover:text-blue-700"
               onClick={() => setIsOpen(true)}
             >
@@ -60,7 +62,7 @@ function PersonalInfo() {
           <div className="flex items-center justify-between mt-4">
             <p>کد ملی</p>
             <p className="text-sm text-gray-500">
-              {profile?.nationalCode ? profile.nationalCode : "__"}
+              {profile?.nationalCode ? toPersianDigits(profile.nationalCode) : "__"}
             </p>
           </div>
 

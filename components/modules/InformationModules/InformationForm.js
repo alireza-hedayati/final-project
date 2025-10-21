@@ -1,7 +1,7 @@
 import PersianDateInput from "@/utils/PersianDate";
 import informationSchema from "@/validation/InformationValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import GenderDropdown from "./GenderDropdown";
 import useProfile from "@/hooks/useProfile";
@@ -45,11 +45,11 @@ function InformationForm({ onSave, setIsOpen }) {
   };
 
   if (isLoading) return <p>درحال بارگزاری اطلاعات ...</p>;
-  
+
   return (
     <div>
       <form onSubmit={handleSubmit(submitHandler)}>
-        <div>ویزایش اطلاعات شخصی</div>
+        <div>ویرایش اطلاعات شخصی</div>
         <div className="mt-3">
           <input
             type="text"
@@ -57,7 +57,7 @@ function InformationForm({ onSave, setIsOpen }) {
             placeholder="نام و نام خانوادگی"
             className="cursor-pointer border-gray-300 border-[1px] px-2 py-1 rounded-lg w-full outline-none"
           />
-          <span>{errors.fullName?.message}</span>
+          <span className="text-sm text-red-500">{errors.fullName?.message}</span>
         </div>
         <div className="mt-3">
           <input
@@ -66,7 +66,7 @@ function InformationForm({ onSave, setIsOpen }) {
             placeholder="کد ملی"
             className="cursor-pointer border-gray-300 border-[1px] outline-0 px-2 py-1 rounded-lg w-full placeholder:text-right"
           />
-          <span>{errors.nationalCode?.message}</span>
+          <span className="text-red-500 text-sm">{errors.nationalCode?.message}</span>
         </div>
         <div className="mt-3 border-[1px] border-gray-300 rounded-lg">
           <GenderDropdown errors={errors} control={control} />
@@ -82,17 +82,19 @@ function InformationForm({ onSave, setIsOpen }) {
               />
             )}
           />
-          <span>{errors.birthDate?.message}</span>
+          <span className="text-sm text-red-500 px-3">{errors.birthDate?.message}</span>
         </div>
 
         <div className="flex items-center justify-between mt-4 w-8/10 mx-auto">
           <button
+            aria-label="تایید-فرم"
             type="submit"
             className="cursor-pointer bg-green-500 w-30 text-white py-1 border-0 rounded-lg hover:bg-green-700"
           >
             تایید
           </button>
           <button
+            aria-label="انصراف-از-تکمیل-فرم-"
             className="cursor-pointer text-green-500  py-1 border-green-500 border-[2px] rounded-lg w-30 hover:text-red-400  hover:border-red-400"
             type="button"
             onClick={() => setIsOpen(false)}

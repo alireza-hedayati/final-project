@@ -3,9 +3,8 @@ import { toPersianDigits } from "@/utils/changeNum";
 import Link from "next/link";
 
 function PhoneBanner() {
-
   const number = "021-4018";
-  
+
   return (
     <div className="my-10 relative border-gray-100 border-2  rounded-t-lg w-9/10 mx-auto  xl:w-full lg:flex lg:rounded-2xl">
       <div className=" mx-auto flex flex-4 justify-center relative h-38  md:mx-auto md:w-auto md:h-40 lg:w-full lg:h-44">
@@ -13,6 +12,7 @@ function PhoneBanner() {
         <img
           className="bg-transparent absolute left-0 bottom-0 "
           src="/images/cartoon.webp"
+          alt="cartoon-banner"
         />
       </div>
       <div className="absolute top-5 right-3">
@@ -29,6 +29,7 @@ function PhoneBanner() {
           <MdLocalPhone />
         </p>
         <Link
+          aria-label="لینک-تماس-باما"
           href="/torino/contact-us"
           className="bg-green-900 border-0 px-2 text-white rounded-lg py-1 cursor-pointer hover:bg-green-700 "
         >

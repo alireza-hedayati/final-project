@@ -5,7 +5,6 @@ import useProfile from "@/hooks/useProfile";
 import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function BankInformation() {
-
   const [open, setOpen] = useState(false);
 
   const { updateBankInfo, profile, isLoading } = useProfile();
@@ -21,8 +20,13 @@ function BankInformation() {
   };
 
   const payment = profile?.payment || {};
-  if (isLoading) return <div className="mt-10"><ProfileSkeleton/></div>;
-  
+  if (isLoading)
+    return (
+      <div className="mt-10">
+        <ProfileSkeleton />
+      </div>
+    );
+
   return (
     <div className="w-8/10 border-gray-200 border-[1px] rounded-xl mx-auto mt-5 px-3 py-2 shadow-sm lg:w-14/15">
       {!open ? (
@@ -30,6 +34,7 @@ function BankInformation() {
           <div className="flex items-center justify-between">
             <p className="text-lg font-semibold">اطلاعات حساب بانکی</p>
             <button
+              aria-label="ویرایش-اطلاعات"
               className="cursor-pointer flex items-center gap-1 text-blue-500 hover:text-blue-700"
               onClick={() => setOpen((prev) => !prev)}
             >
