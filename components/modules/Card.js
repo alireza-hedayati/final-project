@@ -38,10 +38,16 @@ function Card(props) {
         </Link>
 
         <p className="text-base">
-          <span className="text-blue-600 text-lg px-2">
-            {toPersianDigits(price.toLocaleString())}
-          </span>
-          تومان
+          {availableSeats > 0 ? (
+            <>
+              <span className="text-blue-600 text-lg px-2">
+                {toPersianDigits(price.toLocaleString())}
+              </span>
+              تومان
+            </>
+          ) : (
+            ""
+          )}
         </p>
       </div>
     </div>

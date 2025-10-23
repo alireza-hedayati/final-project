@@ -1,8 +1,10 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL;
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL,
+  baseURL: BASE_URL,
 });
 
 api.interceptors.request.use((config) => {
@@ -14,37 +16,50 @@ api.interceptors.request.use((config) => {
 });
 
 let refreshPromise = null;
+
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
-    console.log(err)
     const originalRequest = err.config;
+
     if (!err.response) {
-      return Promise.reject(error);
+      return Promise.reject(err);
     }
+
     const status = err.response.status;
+
     if (status >= 500) {
       window.location.href = "/500";
       return Promise.reject(err);
     }
-    if (status === 401 && !originalRequest._retry) {
+
+    if ((status === 401 || status === 403) && !originalRequest._retry) {
       originalRequest._retry = true;
+
+      const refreshToken = Cookies.get("refreshToken");
+
+      if (!refreshToken) {
+        Cookies.remove("accessToken");
+        Cookies.remove("refreshToken");
+        return Promise.reject(err);
+      }
+
       if (!refreshPromise) {
-        refreshPromise = api
-          .post("/auth/refresh-token", {}, { withCredentials: true })
+        refreshPromise = axios
+          .post(`${BASE_URL}/auth/refresh-token`, { refreshToken })
           .then(({ data }) => {
             const newToken = data.accessToken;
-            Cookies.set("accessToken", data.accessToken, {
+            Cookies.set("accessToken", newToken, {
               expires: 30,
               secure: true,
-              sameSite: "Strict",
+              sameSite: "strict",
             });
             return newToken;
           })
           .catch((err) => {
             Cookies.remove("accessToken");
-            window.location.href = "/torino";
-            throw err;
+            Cookies.remove("refreshToken");
+            return Promise.reject(err);
           })
           .finally(() => {
             refreshPromise = null;

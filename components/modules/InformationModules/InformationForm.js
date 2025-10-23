@@ -57,7 +57,9 @@ function InformationForm({ onSave, setIsOpen }) {
             placeholder="نام و نام خانوادگی"
             className="cursor-pointer border-gray-300 border-[1px] px-2 py-1 rounded-lg w-full outline-none"
           />
-          <span className="text-sm text-red-500">{errors.fullName?.message}</span>
+          <span className="text-sm text-red-500">
+            {errors.fullName?.message}
+          </span>
         </div>
         <div className="mt-3">
           <input
@@ -66,7 +68,9 @@ function InformationForm({ onSave, setIsOpen }) {
             placeholder="کد ملی"
             className="cursor-pointer border-gray-300 border-[1px] outline-0 px-2 py-1 rounded-lg w-full placeholder:text-right"
           />
-          <span className="text-red-500 text-sm">{errors.nationalCode?.message}</span>
+          <span className="text-red-500 text-sm">
+            {errors.nationalCode?.message}
+          </span>
         </div>
         <div className="mt-3 border-[1px] border-gray-300 rounded-lg">
           <GenderDropdown errors={errors} control={control} />
@@ -82,7 +86,9 @@ function InformationForm({ onSave, setIsOpen }) {
               />
             )}
           />
-          <span className="text-sm text-red-500 px-3">{errors.birthDate?.message}</span>
+          <span className="text-sm text-red-500 px-3">
+            {errors.birthDate?.message}
+          </span>
         </div>
 
         <div className="flex items-center justify-between mt-4 w-8/10 mx-auto">

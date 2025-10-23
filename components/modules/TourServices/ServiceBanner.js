@@ -4,11 +4,9 @@ import Image from "next/image";
 function ServiceBanner() {
   return (
     <div className="relative mt-0">
-      <div className="mx-auto h-50 flex justify-center lg:h-80 xl:h-90">
+      <div className="relative mx-auto h-50 flex justify-center lg:h-80 xl:h-[350px]">
         <Image
-          layout="responsive"
-          width={10}
-          height={10}
+          fill
           src="/images/adventure1.webp"
           alt="Image"
         />
@@ -23,7 +21,7 @@ function ServiceBanner() {
         <Link
         aria-label="مشاهده-تورها"
           href="/torino"
-          className="bg-[linear-gradient(to_right,#00b09b,#96c93d)] text-center w-40 mt-2 py-1 rounded-lg text-white hover:opacity-60 xl:text-lg xl:w-48" 
+          className="bg-[linear-gradient(to_right,#00b09b,#96c93d)] text-center w-40 mt-2 py-1 rounded-lg text-white hover:opacity-60 xl:text-lg xl:w-44" 
         >
           همین حالا رزرو کنید
         </Link>

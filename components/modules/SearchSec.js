@@ -8,45 +8,58 @@ import DestinationDropdown from "./SearchForm/DestinationDropdown";
 import { cityNamesFa } from "@/utils/cityNamesFa";
 import useDebounce from "@/hooks/useDebounce";
 
-
 function SearchSec({ onSearch, origins, destinations }) {
-  
   const isFirstRender = useRef(true);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
-  const [dateObject, setDateObject] = useState(null);
+  const [dateRange, setDateRange] = useState([]);
   const [showOriginDropdown, setShowOriginDropdown] = useState(false);
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
-  const formattedDate = dateObject?.toDate
-    ? dateObject.toDate().toISOString().split("T")[0]
-    : null;
+
+  const formattedStartDate =
+    dateRange?.[0]?.toDate()?.toISOString().split("T")[0] || null;
+  const formattedEndDate =
+    dateRange?.[1]?.toDate()?.toISOString().split("T")[0] || null;
+
   const debouncedOrigin = useDebounce(origin);
   const debouncedDestination = useDebounce(destination);
-  const debouncedDate = useDebounce(formattedDate, 500);
+  const debouncedStartDate = useDebounce(formattedStartDate, 500);
+  const debouncedEndDate = useDebounce(formattedEndDate, 500);
+
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-    if (!debouncedOrigin && !debouncedDestination && !debouncedDate) return;
+    if (
+      !debouncedOrigin &&
+      !debouncedDestination &&
+      !debouncedStartDate &&
+      !debouncedEndDate
+    )
+      return;
+
     onSearch({
       originId: debouncedOrigin,
       destinationId: debouncedDestination,
-      startDate: debouncedDate,
+      startDate: debouncedStartDate,
+      endDate: debouncedEndDate,
     });
-  }, [debouncedDate, debouncedDestination, debouncedOrigin]);
+  }, [
+    debouncedStartDate,
+    debouncedEndDate,
+    debouncedDestination,
+    debouncedOrigin,
+  ]);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    let queryDate = null;
-    if (dateObject) {
-      const jsDate = dateObject.toDate();
-      queryDate = jsDate.toISOString().split("T")[0];
-    }
 
     onSearch({
       originId: origin,
       destinationId: destination,
-      startDate: queryDate,
+      startDate: formattedStartDate,
+      endDate: formattedEndDate,
     });
   };
 
@@ -60,7 +73,7 @@ function SearchSec({ onSearch, origins, destinations }) {
       <form onSubmit={submitHandler}>
         <div className=" flex flex-col border-0 py-4 gap-4  lg:flex-row lg:border-gray-300 lg:border-2 lg:rounded-xl lg:py-0 lg:mx-auto lg:items-center">
           <div className=" w-fit flex gap-4  lg:flex lg:gap-2">
-            <div className="relative">
+            <div className="relative ">
               <div
                 className="input-box"
                 onClick={() => setShowOriginDropdown((prev) => !prev)}
@@ -124,13 +137,16 @@ function SearchSec({ onSearch, origins, destinations }) {
             </div>
           </div>
 
-          <div className="w-full   flex items-center justify-center gap-2 my-2 border-gray-300 py-2  rounded-xl border-2 border-solid lg:border-none lg:mx-10">
+          <div className="w-full flex items-center justify-center  gap-2 my-2 border-gray-300 py-2  rounded-xl border-2 border-solid lg:border-none lg:mx-12">
             <SlCalender fontSize={25} className="lg:m-auto" color="gray" />
-            <PersianDateInput date={dateObject} setDate={setDateObject} />
+            <PersianDateInput
+              date={dateRange}
+              setDate={setDateRange}
+            />
           </div>
           <div className="flex items-center justify-center lg:px-5">
             <button
-              className="w-[350px]  bg-green-500 border-none rounded-xl cursor-pointer py-2 text-white hover:bg-green-800  lg:w-[150px] lg:text-lg lg:h-11 lg:py-0 lg:px-4"
+              className="w-[350px] lg:mr-[10px]  bg-green-500 border-none rounded-xl cursor-pointer py-2 text-white hover:bg-green-800  lg:w-[150px] lg:text-lg lg:h-11 lg:py-0 lg:px-4 "
               type="submit"
             >
               جستجو

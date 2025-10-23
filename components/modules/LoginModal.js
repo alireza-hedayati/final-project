@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoReturnDownBack } from "react-icons/io5";
 import OtpForm from "./OtpForm";
 import checkOtp from "../helpers/checkOtp";
-import { useUser } from "@/context/UserContext";
 import { toPersianDigits } from "@/utils/changeNum";
 
 function LoginModal({ setIsOpen }) {
@@ -14,15 +13,9 @@ function LoginModal({ setIsOpen }) {
   const [userNumber, setUserNumber] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
 
-  const { dispatch } = useUser();
-  const handleLoginSuccess = ({ mobile }) => {
+
+  const handleLoginSuccess = () => {
     setIsOpen(false);
-
-
-    dispatch({
-      type: "LOGIN_SUCCESS",
-      payload: { user: { mobile: mobile || userNumber } },
-    });
   };
 
   const sendOtp = useLogin(() => {

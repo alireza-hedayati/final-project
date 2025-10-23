@@ -23,8 +23,8 @@ function MyTours() {
     <>
       {tours?.length > 0 ? (
         <div className="lg:w-14/15 lg:border-[1px] lg:border-gray-200 lg:shadow-sm lg:rounded-lg lg:px-4">
-          {(tours || []).map((tour) => (
-            <TourCard {...tour} key={tour.id} />
+          {(tours || []).map((tour,index) => (
+            <TourCard {...tour} key={index} />
           ))}
         </div>
       ) : (

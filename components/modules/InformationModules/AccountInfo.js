@@ -1,4 +1,3 @@
-import { useUser } from "@/context/UserContext";
 import { toPersianDigits } from "@/utils/changeNum";
 import { useState } from "react";
 import { PiPencilSimpleLine } from "react-icons/pi";
@@ -8,8 +7,6 @@ import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 
 function AccountInfo() {
   const [isOpen, setIsOpen] = useState(false);
-  const { state } = useUser();
-  const mobileNumber = state.user?.mobile;
 
   const { profile, isLoading, updateProfile } = useProfile();
 
@@ -31,7 +28,7 @@ function AccountInfo() {
       <div className="flex items-center justify-between py-2">
         <p>شماره موبایل</p>
         <p className="text-sm text-gray-500">
-          {mobileNumber ? toPersianDigits(mobileNumber) : ""}
+          {profile?.mobile ? toPersianDigits(profile?.mobile) : "--"}
         </p>
       </div>
       {!isOpen ? (

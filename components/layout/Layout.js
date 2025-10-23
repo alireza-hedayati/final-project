@@ -5,11 +5,11 @@ import { useState } from "react";
 import { toPersianDigits } from "@/utils/changeNum";
 import MobileMenu from "../modules/MobileMenu";
 import LoginModal from "../modules/LoginModal";
-import { useUser } from "@/context/UserContext";
 import ProfileDropDown from "./ProfileDropDown";
 import LoginButtons from "./LoginButtons";
 import LoginButtonSkeleton from "./LoginButtonSkeleton";
 import { useRouter } from "next/router";
+import useProfile from "@/hooks/useProfile";
 
 function Layout({ children }) {
   const links = [
@@ -28,7 +28,7 @@ function Layout({ children }) {
   ];
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "7485-021";
-  const { state } = useUser();
+  const { isAuthenticated, isLoading } = useProfile();
   const router = useRouter();
 
   return (
@@ -48,10 +48,11 @@ function Layout({ children }) {
           </div>
 
           <ul className="flex items-center justify-between gap-5">
-            {links.map(({ id,href, label }) => {
+            {links.map(({ id, href, label }) => {
               const isActive = router.pathname === href;
               return (
-                <li key={id}
+                <li
+                  key={id}
                   className={`${isActive ? "text-green-500" : "text-gray-700"}`}
                 >
                   <Link aria-label="لینک-صفحات" key={href} href={href}>
@@ -62,9 +63,9 @@ function Layout({ children }) {
             })}
           </ul>
         </nav>
-        {state.isLoading ? (
+        {isLoading ? (
           <LoginButtonSkeleton />
-        ) : state.isAuthenticated ? (
+        ) : isAuthenticated ? (
           <ProfileDropDown />
         ) : (
           <LoginButtons setIsOpen={setIsOpen} />

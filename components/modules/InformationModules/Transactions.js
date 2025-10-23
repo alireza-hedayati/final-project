@@ -33,7 +33,7 @@ function Transactions() {
                 <th className="font-medium text-gray-500 w-30">
                   مبلغ<span className="text-sm">(تومان)</span>
                 </th>
-                <th className="hidden lg:block font-medium w-44 text-center py-3  text-gray-500">
+                <th className="hidden lg:block font-medium  text-center py-3  text-gray-500">
                   نوع تراکنش
                 </th>
                 <th className="rounded-tl-lg font-medium text-gray-500 w-30">

@@ -7,33 +7,29 @@ import WhyUs from "../modules/WhyUs";
 import Features from "../modules/Features";
 import api from "@/config/api";
 import { useRouter } from "next/router";
-
-function extractUniqueCities(data, key) {
-  
-  const citiesMap = new Map();
-  data.forEach((tour) => {
-    const city = tour[key];
-    if (!citiesMap.has(city.id)) {
-      citiesMap.set(city.id, city);
-    }
-  });
-  return Array.from(citiesMap.values());
-}
+import extractUniqueCities from "@/utils/extractCities";
 
 function HomePage({ initialData }) {
   const [tours, setTours] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  
   const origins = useMemo(() => extractUniqueCities(initialData, "origin"));
   const destinations = useMemo(() =>
     extractUniqueCities(initialData, "destination")
   );
 
-  const handleSearch = async ({ originId, destinationId, startDate }) => {
+  const handleSearch = async ({
+    originId,
+    destinationId,
+    startDate,
+    endDate,
+  }) => {
     router.push(
       {
         pathname: "/torino",
-        query: { originId, destinationId, startDate },
+        query: { originId, destinationId, startDate, endDate },
       },
       undefined,
       { shallow: true }
@@ -45,11 +41,11 @@ function HomePage({ initialData }) {
       if (originId) params.append("originId", originId);
       if (destinationId) params.append("destinationId", destinationId);
       if (startDate) params.append("startDate", startDate);
+      if (endDate) params.append("endDate", endDate);
       const queryString = params.toString();
       const res = await api.get(`/tour${queryString ? `?${queryString}` : ""}`);
       setTours(res.data);
     } catch (err) {
-      console.error("Client-side search failed:", err);
     } finally {
       setLoading(false);
     }

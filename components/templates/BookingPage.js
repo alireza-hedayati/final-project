@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import CheckoutForm from "../modules/CheckoutForm/CheckoutForm";
 
 function BookingPage(props) {
-  
   const { title, id: tourId, duration, price } = props;
   const { profile } = useProfile();
   const router = useRouter();
@@ -43,7 +42,6 @@ function BookingPage(props) {
         return;
       }
       await api.put(`/basket/${tourId}`);
-      console.log(passenger);
       await api.post("/order", passenger);
       toast.success("خرید شما با موفقیت ثبت شد 🎉");
       sessionStorage.setItem("purchaseSuccess", "true");
@@ -77,7 +75,7 @@ function BookingPage(props) {
         </div>
         <div className="flex justify-center items-center w-full">
           <button
-          aria-label="ثبت-نهایی"
+            aria-label="ثبت-نهایی"
             onClick={handleBooking}
             disabled={loading}
             className="bg-green-500 text-white rouded-lg w-9/10 rounded-lg py-1 cursor-pointer hover:bg-green-600"

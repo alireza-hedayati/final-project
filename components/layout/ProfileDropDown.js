@@ -1,21 +1,26 @@
 import { useState } from "react";
-import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { IoPerson } from "react-icons/io5";
 import { useRouter } from "next/router";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { toPersianDigits } from "@/utils/changeNum";
+import useProfile from "@/hooks/useProfile";
+import { useQueryClient } from "@tanstack/react-query";
+import Cookies from "js-cookie";
 
 function ProfileDropDown() {
+  const queryClient =useQueryClient();
+  const { profile } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
-  const { state, dispatch } = useUser();
   const router = useRouter();
-  const displayInfo = state.user?.mobile || "پروفایل";
+
   const handleLogout = () => {
-    dispatch({ type: "LOG_OUT" });
-    setIsOpen(false);
-    router.push("/torino");
+    Cookies.remove("accessToken");
+    Cookies.remove("refreshToken");
+    queryClient.removeQueries(["userProfile"])
+    router.replace("/torino")
+    
   };
 
   return (
@@ -27,7 +32,7 @@ function ProfileDropDown() {
       >
         <span className="flex items-center gap-1">
           <IoPerson className="mb-1" />
-          {toPersianDigits(displayInfo)}
+          {toPersianDigits(profile?.mobile || "پروفایل")}
         </span>
         <span>{isOpen ? "▲" : "▼"}</span>
       </button>
@@ -40,10 +45,10 @@ function ProfileDropDown() {
             <span className="bg-gray-400 rounded-4xl w-fit px-1 h-5 flex items-center justify-center mb-1">
               <IoPerson fontSize={13} />
             </span>
-            <p className="text-sm">{displayInfo}</p>
+            <p className="text-sm">{profile?.mobile}</p>
           </div>
           <Link
-          aria-label="لینک-اطلاعات-کاربر"
+            aria-label="لینک-اطلاعات-کاربر"
             href="/torino/information"
             className="flex items-center justify-start gap-1 text-sm px-2 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 hover:rounded-lg "
             onClick={() => setIsOpen(false)}

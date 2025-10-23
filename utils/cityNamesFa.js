@@ -8,5 +8,6 @@ export const cityNamesFa = {
   Mazandaran: "مازندران",
   Gilan: "گیلان",
   Italy: "ایتالیا",
-  Kish:"کیش"
+  Kish: "کیش",
+  Shiraz: "شیراز",
 };
