@@ -10,7 +10,9 @@
 
 - [تکنولوژی ها](#تکنولوژی-ها)
 
-- [روش نصب](#روش-نصب)
+- [ روش نصب فرانت اند](#روش-نصب-فرانت)
+
+- [روش نصب بک اند](#روش-نصب-بک)
 
 - [ویژگی ها](#ویژگیهای-کلیدی)
 
@@ -27,9 +29,9 @@
 
 ### 🏠 صفحه اصلی تورینو <a id="صفحه-اصلی-تورینو"></a>
 
-![صفحه  اصلی تورینو](./assets/screenshots/Torino-desktop.png)
+![صفحه  اصلی تورینو](../my-app/Frontend/assets/screenshots/Torino-desktop.png)
 
-![ صفحه اصلی تورینو](./assets//screenshots/Torino-mobile.png)
+![ صفحه اصلی تورینو](../my-app/Frontend/assets//screenshots/Torino-mobile.png)
 
 ---
 
@@ -45,7 +47,7 @@
 
 ---
 
-### 🔌 روش نصب <a id="روش-نصب"></a>
+### 🔌 Frontend روش نصب <a id="روش-نصب-فرانت"></a>
 
 برای راه اندازی پروژه مانند زیر عمل کنید
 
@@ -56,9 +58,9 @@
 
    ```
 
-2. **وارد فولدر my-app شوید**
+2. **وارد پوشه ی Frontend شوید**
 
-`cd my-app`
+`cd Frontend`
 
 3. **پکیج ها را نصب کنید**
 
@@ -70,37 +72,75 @@
 
 ---
 
+### 🔌 روش نصب Backend <a id="روش-نصب-بک"></a>
+
+برای راه اندازی پروژه مانند زیر عمل کنید
+
+1. **وارد پوشه ی Backend شوید**
+
+`cd Backend`
+
+2. **پکیج ها را نصب کنید**
+
+` npm install`
+
+3. **پروژه را اجرا کنید**
+
+` npm start`
+
+---
+
 ### 📂 ساختار پروژه
 
-```my-app/
-├── components/
-│ ├── layout/
-│ ├── modules/
-│ └── templates/
-│
-├── context/
-│
-├── hooks/
+```Frontend/
+├── .next/
+├── assets/
+│   ├── components/
+│   │   ├── common/
+│   │   ├── helpers/
+│   │   ├── layout/
+│   │   ├── modules/
+│   │   └── templates/
+│   ├── config/
+│   │   └── api.js
+│   ├── hooks/
+│   └── node_modules/
 │
 ├── pages/
-│ ├── api/
-│ ├── torino/
-│ ├── _app.js
-│ ├── _document.js
-│ ├── 404.js
-│ ├── 500.js
-│ └── index.js
+│   ├── api/
+│   ├── torino/
+│   │   ├── booking/
+│   │   └── tours/
+│   │       ├── about-us.js
+│   │       ├── contact-us.js
+│   │       ├── index.js
+│   │       ├── information.js
+│   │       └── services.js
+│   ├── _app.js
+│   ├── _document.js
+│   ├── 404.js
+│   ├── 500.js
+│   └── index.js
 │
 ├── public/
-│ ├── fonts/
-│ ├── icons/
-│ └── images/
+│   ├── fonts/
+│   ├── icons/
+│   ├── images/
+│   └── favicon.ico
 │
 ├── styles/
-│
 ├── utils/
 ├── validation/
 │
+├── .env
+├── .gitignore
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+└── README.md
 
 ```
 
