@@ -29,9 +29,9 @@
 
 ### 🏠 صفحه اصلی تورینو <a id="صفحه-اصلی-تورینو"></a>
 
-![صفحه  اصلی تورینو](../my-app/Frontend/assets/screenshots/Torino-desktop.png)
+![صفحه  اصلی تورینو](./Frontend/assets/screenshots/Torino-desktop.png)
 
-![ صفحه اصلی تورینو](../my-app/Frontend/assets//screenshots/Torino-mobile.png)
+![ صفحه اصلی تورینو](./Frontend/assets//screenshots/Torino-mobile.png)
 
 ---
 
