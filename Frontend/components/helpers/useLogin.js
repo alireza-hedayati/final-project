@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import api from "@/config/api";
 
 const useLogin = (onSuccessStepChange) => {
-  
   return useMutation({
     mutationFn: (data) => api.post("/auth/send-otp", data),
+
     onSuccess: (response) => {
       toast.success(<Success response={response.data} />, {
         position: "top-right",
@@ -15,7 +15,7 @@ const useLogin = (onSuccessStepChange) => {
       if (onSuccessStepChange) onSuccessStepChange();
     },
     onError: (error) => {
-      toast.error(error.response?.data?.message || error.message);
+      toast.error(error.response?.data?.message || "خطا در ارسال کد");
     },
   });
 };

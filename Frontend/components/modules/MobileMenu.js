@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { GoHome } from "react-icons/go";
@@ -11,6 +10,7 @@ import { useRouter } from "next/router";
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
   const links = [
     {
       id: 1,
@@ -51,14 +51,15 @@ export default function MobileMenu() {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/50 z-40"
+          className=" fixed inset-0 bg-black/50 z-40"
         />
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 rounded-l-lg ${
+        className={`fixed top-0 right-0 h-full w-2/5 max-w-xs bg-white shadow-lg z-50 transform transition-transform duration-300 rounded-l-lg min-w-10 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{ visibility: isOpen ? "visible" : "hidden" }}
       >
         <button
           aria-label="بستن-منو"

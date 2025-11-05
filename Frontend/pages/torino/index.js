@@ -1,10 +1,9 @@
 import SEO from "@/components/common/SEO";
 import HomePage from "@/components/templates/HomePage";
 import api from "@/config/api";
-import { notFound } from "next/navigation";
 import React from "react";
 
-export default function Torino({ initialData }) {
+export default function Torino({ initialData, error }) {
   return (
     <>
       <SEO
@@ -12,7 +11,13 @@ export default function Torino({ initialData }) {
         description="تورینو؛ بهترین مقصد برای رزرو تورهای داخلی و خارجی. با ما سفر خود را هوشمندانه برنامه‌ریزی کنید."
         keywords="تورینو, تور, سفر, رزرو تور, تور لحظه آخری"
       />
-      <HomePage initialData={initialData} />
+      <div>
+        {error ? (
+          <div className="text-red-500 text-center p-6">{error}</div>
+        ) : (
+          <HomePage initialData={initialData} />
+        )}
+      </div>
     </>
   );
 }
@@ -36,7 +41,14 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.error("API request failed:", error.message);
-    return { notFound: true };
+    let errorMessage = "خطا در برقراری ارتباط با سرور. لطفاً دوباره تلاش کنید.";
+    if (error?.response?.status === 404) {
+      errorMessage = "تور مورد نظر یافت نشد.";
+    } else if (error?.response?.status === 500) {
+      errorMessage = "خطای سرور";
+    }
+    return {
+      props: { error: errorMessage },
+    };
   }
 }

@@ -28,13 +28,16 @@ function Layout({ children }) {
   ];
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "7485-021";
-  const { isAuthenticated, isLoading } = useProfile();
+  const { isAuthenticated, isLoading, isError, error } = useProfile();
   const router = useRouter();
+  if (isError) {
+    return <div className="text-red-500 text-center p-4">{error.message}</div>;
+  }
 
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <div className="w-full min-w-fit min-h-screen flex flex-col">
       <header className="flex items-center justify-between px-6 py-2 shadow-lg border-b border-gray-100 lg:px-8 xl:px-4">
-        <div className="flex gap-5 lg:hidden xl:hidden">
+        <div className="flex gap-5 w-fit lg:hidden">
           <MobileMenu />
         </div>
 

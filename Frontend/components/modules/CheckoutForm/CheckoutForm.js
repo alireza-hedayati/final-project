@@ -4,11 +4,11 @@ import { useForm, Controller } from "react-hook-form";
 import useProfile from "@/hooks/useProfile";
 import GenderDropdown from "../InformationModules/GenderDropdown";
 import PersianDateInput from "@/utils/PersianDate";
-import informationSchema from "@/validation/InformationValidation";
 import { IoPerson } from "react-icons/io5";
 import CheckoutSkeleton from "../Skeletons/CheckoutSkeleton";
 import useIsMobile from "@/hooks/useIsMobile";
 import CheckoutSkeletonLg from "../Skeletons/CheckoutSkeletonLg";
+import checkoutSchema from "@/validation/checkoutValidation";
 
 function CheckoutForm({ onSave }) {
 
@@ -20,7 +20,7 @@ function CheckoutForm({ onSave }) {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(informationSchema),
+    resolver: yupResolver(checkoutSchema),
     defaultValues: {
       fullName: "",
       nationalCode: "",
@@ -28,6 +28,7 @@ function CheckoutForm({ onSave }) {
       birthDate: null,
     },
   });
+
   useEffect(() => {
     if (profile) {
       reset({
@@ -43,9 +44,11 @@ function CheckoutForm({ onSave }) {
       });
     }
   }, [profile, reset]);
+  
   const submitHandler = (data) => {
     onSave(data);
   };
+
   const isMobile = useIsMobile(1024);
   if (isLoading) {
     if (isMobile) {

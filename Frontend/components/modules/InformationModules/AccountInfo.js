@@ -8,7 +8,7 @@ import ProfileSkeleton from "../Skeletons/ProfileSkeleton";
 function AccountInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { profile, isLoading, updateProfile } = useProfile();
+  const { profile, isLoading, updateProfile, isError, error } = useProfile();
 
   if (isLoading)
     return (
@@ -16,6 +16,10 @@ function AccountInfo() {
         <ProfileSkeleton />
       </div>
     );
+
+  if (isError) {
+    return <div className="text-red-500 text-center p-4">{error.message}</div>;
+  }
 
   const handleSaveEmail = (newEmail) => {
     updateProfile({ ...profile, email: newEmail });

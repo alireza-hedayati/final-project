@@ -2,6 +2,7 @@ import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import api from "@/config/api";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 function useProfile() {
   const queryClient = useQueryClient();
   const [isProfileReady, setIsProfileReady] = useState(false);
@@ -19,8 +20,23 @@ function useProfile() {
   } = useQuery({
     queryKey: ["userProfile"],
     queryFn: async () => {
-      const res = await api.get("/user/profile");
-      return res.data.user || res.data;
+      try {
+        const res = await api.get("/user/profile");
+        return res.data.user || res.data;
+      } catch (error) {
+        let errorMessage =
+          "خطا در برقراری ارتباط با سرور. لطفاً دوباره تلاش کنید.";
+
+        if (error?.response?.status === 401) {
+          errorMessage = "دسترسی شما منقضی شده است. لطفاً دوباره وارد شوید.";
+        } else if (error?.response?.status === 404) {
+          errorMessage = "پروفایل کاربر یافت نشد.";
+        } else if (error?.response?.status === 500) {
+          errorMessage = "خطای داخلی سرور رخ داده است.";
+        }
+
+        throw new Error(errorMessage);
+      }
     },
     staleTime: 1000 * 60 * 5,
     retry: false,
@@ -31,21 +47,54 @@ function useProfile() {
 
   const { mutate: updateProfile, isPending: isUpdatingProfile } = useMutation({
     mutationFn: async (newData) => {
-      const res = await api.put("/user/profile", newData);
-      return res.data;
+      try {
+        const res = await api.put("/user/profile", newData);
+        return res.data;
+      } catch (error) {
+        let errorMessage = "خطا در بروزرسانی اطلاعات. لطفاً دوباره تلاش کنید.";
+
+        if (error?.response?.status === 400) {
+          errorMessage = "اطلاعات واردشده نامعتبر است.";
+        } else if (error?.response?.status === 401) {
+          errorMessage = "دسترسی شما منقضی شده است. لطفاً وارد شوید.";
+        } else if (error?.response?.status === 500) {
+          errorMessage = "خطای سرور رخ داده است.";
+        }
+
+        throw new Error(errorMessage);
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userProfile"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
 
   const { mutate: updateBankInfo, isPending: isUpdatingBank } = useMutation({
     mutationFn: async (payment) => {
-      const res = await api.put("/user/profile", { payment });
-      return res.data;
+      try {
+        const res = await api.put("/user/profile", { payment });
+        return res.data;
+      } catch (error) {
+        let errorMessage = "خطا در بروزرسانی اطلاعات. لطفاً دوباره تلاش کنید.";
+        if (error?.response?.status === 400) {
+          errorMessage = "اطلاعات واردشده نامعتبر است.";
+        } else if (error?.response?.status === 401) {
+          errorMessage = "دسترسی شما منقضی شده است. لطفاً وارد شوید.";
+        } else if (error?.response?.status === 500) {
+          errorMessage = "خطای سرور رخ داده است.";
+        }
+
+        throw new Error(errorMessage);
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userProfile"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
   return {

@@ -26,7 +26,7 @@ function Tours({ data, loading }) {
   }
 
   return (
-    <div className="flex flex-col items-center w-auto my-8 ">
+    <div className="flex flex-col items-center my-8 mx-auto">
       <p className="text-2xl my-3 px-17 self-start md:px-40 lg:px-10">
         همه تورها
       </p>
